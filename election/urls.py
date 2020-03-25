@@ -20,4 +20,5 @@ from assembly import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
+    path('assembly/', views.assembly, name='assembly')
 ]
