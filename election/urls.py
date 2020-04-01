@@ -16,9 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from assembly import views
+import map.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
-    path('assembly/', views.assembly, name='assembly')
+    path('assembly/', views.assembly, name='assembly'),
+    path('map/', map.views.promise, name='map')
+
 ]
