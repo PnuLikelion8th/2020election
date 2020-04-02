@@ -17,11 +17,11 @@ from django.contrib import admin
 from django.urls import path
 from assembly import views
 import map.views
-
+import get_data.views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
     path('assembly/', views.assembly, name='assembly'),
-    path('map/', map.views.promise, name='map')
-
+    path('map/', map.views.promise, name='map'),
+    path('makeparty/', get_data.views.makeparty,name="makeparty"),
 ]
