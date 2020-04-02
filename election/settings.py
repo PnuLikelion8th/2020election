@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'pm4p$@ds4kojuvc-3p0t@up#!ooo(s=9jmir_yink14_0gkg5d'
+SECRET_KEY = ''
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -37,7 +37,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    #이거는 data를 가져오기 위한 app
+    'get_data',
+    #이거는 뭔지 모르겠네
     'assembly.apps.AssemblyConfig',
+    #이거는 맵
     'map.apps.MapConfig',
 ]
 
