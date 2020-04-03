@@ -8,4 +8,8 @@ from urllib.parse import  urlencode,quote_plus
 def index(request):
     cities = City.objects
     gungus = Gungu.objects
-    return render(request, 'index.html', {'cities' : cities})
+    candidates = Candidate.objects
+    parties = Party.objects
+    partypolicies = PartyPolicy.objects
+    return render(request, 'index.html', 
+    {'cities' : cities, 'gungus' :gungus, 'candidates':candidates, 'parties':parties, 'partypolicies':partypolicies})

@@ -54,6 +54,8 @@ h2 {
     box-shadow: 0px 8px 16px 0px rgba(77, 63, 63);
     z-index: 1;
     border-radius: 30px;
+    height: 200px;
+    overflow-y: scroll;
   }
   
   /* Links inside the dropdown */
