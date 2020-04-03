@@ -1,7 +1,8 @@
 
 # Created by https://www.gitignore.io/api/django
 # Edit at https://www.gitignore.io/?templates=django
-
+election/__pycache__/*
+assembly/__pycache__/*
 
 .config_secret
 ### Django ###
