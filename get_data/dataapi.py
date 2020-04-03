@@ -106,9 +106,36 @@ PARTY = ['더불어민주당','미래통합당','민생당','미래한국당','�
 
 #후보자 API
 
-pa_num = range(1,12)
-URL3 = 'http://apis.data.go.kr/9760000/PofelcddInfoInqireService/getPofelcddRegistSttusInfoInqire?serviceKey=1xchWYQzhGHEZWwvB6UCLFzMCUxgox9p4lZ%2Fbj8%2FaOTeSBZ0cA4NCQt%2BLMgPTljOOxFBjJA5CuFsDfynkT0HXw%3D%3D&pageNo=1&numOfRows=1200&sgId=20200415&sgTypecode=2
+URL3 = 'http://apis.data.go.kr/9760000/PofelcddInfoInqireService/getPofelcddRegistSttusInfoInqire?serviceKey=1xchWYQzhGHEZWwvB6UCLFzMCUxgox9p4lZ%2Fbj8%2FaOTeSBZ0cA4NCQt%2BLMgPTljOOxFBjJA5CuFsDfynkT0HXw%3D%3D&pageNo=1&numOfRows=120&sgId=20200415&sgTypecode=2&resultType=json'
 
 resp = requests.get(URL3)
 json_result = json.loads(resp.text)
-print(json_result)
+# print(json_result)
+# 후보자 리스트
+candi_list = json_result['getPofelcddRegistSttusInfoInqire']['item']
+
+
+# 우리가 가져올 key값
+# HUBOID
+# SGG_NAME
+# SD_NAME
+# GENDER
+# WIW_NAME
+# GIHO
+
+# JD_NAME
+# NAME
+#BIRTHDAY
+#AGE
+#ADDR
+#JOB
+#EDU
+#CAREER1
+#CAREER2
+#STATUS
+for i in candi_list:
+    print(i['NAME'])
+    print(i['HUBOID'])
+    print(i['SGG_NAME'])
+    print(i['GENDER'])
+    print("===============")
