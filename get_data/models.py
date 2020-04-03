@@ -48,3 +48,25 @@ class Candidate(models.Model):
 
     def __str__(self):
         return str(self.name)
+
+
+class City(models.Model):
+    name = models.CharField('행정구역',max_length=100)
+
+    class Meta:
+        ordering = ['id']
+
+    def __str__(self):
+        return self.name
+
+
+class Gungu(models.Model):
+    sd_name = models.ForeignKey(City,models.CASCADE)
+    name = models.CharField('군구이름', max_length=100)
+
+    sgg_name = models.CharField('선거구이름',max_length=100)
+    class Meta:
+        ordering = ['id']
+
+    def __str__(self):
+        return self.name

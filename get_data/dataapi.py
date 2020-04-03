@@ -49,13 +49,13 @@ PARTY = ['더불어민주당','미래통합당','민생당','미래한국당','�
 
 
 
-resp = requests.get(URL + API_KEY + '&sgId='+DAY +
-                    '&partyName=더불어시민당&resultType=json')
+# resp = requests.get(URL + API_KEY + '&sgId='+DAY +
+#                     '&partyName=더불어시민당&resultType=json')
 # print(type(resp))
-py_json = json.loads(resp.text)
-# print(py_json)
-target = py_json
-print(target)
+# py_json = json.loads(resp.text)
+# # print(py_json)
+# target = py_json
+# print(target)
 # print(target['partyName'])
 # for i in range(1,11):
 #     print("============================================")
@@ -75,3 +75,31 @@ print(target)
 #             category=target['prmsRealmName'+str(j)], 
 #             desc=target['prmmCont'+str(j)])
 
+
+
+# 선거구관련 정보수집 API 
+
+# 기본적으로 URL은 api key 와 선거 type code, 그리고 선거 id(날짜)를 포함해둔다.
+
+#추가 필요정보 :pageNo, numOfRows
+
+URL2 = 'http://apis.data.go.kr/9760000/CommonCodeService/getCommonSggCodeList?serviceKey=1xchWYQzhGHEZWwvB6UCLFzMCUxgox9p4lZ%2Fbj8%2FaOTeSBZ0cA4NCQt%2BLMgPTljOOxFBjJA5CuFsDfynkT0HXw%3D%3D&sgId=20200415&sgTypecode=2&resultType=json'
+
+pagenum_list = [1,2,3]
+list_cnt = 100
+
+
+resp = requests.get(URL2+'&pageNo=3&numOfRows=100')
+json_result = json.loads(resp.text)
+# print(json_result)
+
+city_list = json_result['getCommonSggCodeList']['item']
+
+index=0
+for i in city_list:
+    print(index)
+    print('',i['SGG_NAME'])
+    print('', i['SD_NAME'])
+    print('', i['WIW_NAME'])
+    print("========================================")
+    index +=1

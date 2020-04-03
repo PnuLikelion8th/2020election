@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .models import Party,PartyPolicy
+from .models import Party, PartyPolicy, City
 import json
 import requests
 
@@ -38,4 +38,23 @@ def makeparty(request):
 
     # del_party = PartyPolicy.objects.all()
     # del_party.delete()
+    return redirect('index')
+
+URL2 = 'http://apis.data.go.kr/9760000/CommonCodeService/getCommonSggCodeList?serviceKey=1xchWYQzhGHEZWwvB6UCLFzMCUxgox9p4lZ%2Fbj8%2FaOTeSBZ0cA4NCQt%2BLMgPTljOOxFBjJA5CuFsDfynkT0HXw%3D%3D&sgId=20200415&sgTypecode=2&resultType=json'
+
+def makecity(request):
+    pagenum_list = [1, 2, 3]
+
+    for pagenum in pagenum_list:
+        resp = requests.get(URL2+'&pageNo=' + str(pagenum) +'&numOfRows=100')
+        json_result = json.loads(resp.text)
+        city_list = json_result['getCommonSggCodeList']['item']
+        
+        for j in city_list:
+            print(j['SD_NAME'])
+            print(j['WIW_NAME'])
+            # if City.objects.filter(name=j['SD_NAME']).exists():
+            #     pass
+            # else:
+            #     City.objects.create(name=j['SD_NAME'])
     return redirect('index')
