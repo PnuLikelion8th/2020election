@@ -83,23 +83,32 @@ PARTY = ['더불어민주당','미래통합당','민생당','미래한국당','�
 
 #추가 필요정보 :pageNo, numOfRows
 
-URL2 = 'http://apis.data.go.kr/9760000/CommonCodeService/getCommonSggCodeList?serviceKey=1xchWYQzhGHEZWwvB6UCLFzMCUxgox9p4lZ%2Fbj8%2FaOTeSBZ0cA4NCQt%2BLMgPTljOOxFBjJA5CuFsDfynkT0HXw%3D%3D&sgId=20200415&sgTypecode=2&resultType=json'
+# URL2 = 'http://apis.data.go.kr/9760000/CommonCodeService/getCommonSggCodeList?serviceKey=1xchWYQzhGHEZWwvB6UCLFzMCUxgox9p4lZ%2Fbj8%2FaOTeSBZ0cA4NCQt%2BLMgPTljOOxFBjJA5CuFsDfynkT0HXw%3D%3D&sgId=20200415&sgTypecode=2&resultType=json'
 
-pagenum_list = [1,2,3]
-list_cnt = 100
+# pagenum_list = [1,2,3]
+# list_cnt = 100
 
 
-resp = requests.get(URL2+'&pageNo=3&numOfRows=100')
+# resp = requests.get(URL2+'&pageNo=3&numOfRows=100')
+# json_result = json.loads(resp.text)
+# # print(json_result)
+
+# city_list = json_result['getCommonSggCodeList']['item']
+
+# index=0
+# for i in city_list:
+#     print(index)
+#     print('',i['SGG_NAME'])
+#     print('', i['SD_NAME'])
+#     print('', i['WIW_NAME'])
+#     print("========================================")
+#     index +=1
+
+#후보자 API
+
+pa_num = range(1,12)
+URL3 = 'http://apis.data.go.kr/9760000/PofelcddInfoInqireService/getPofelcddRegistSttusInfoInqire?serviceKey=1xchWYQzhGHEZWwvB6UCLFzMCUxgox9p4lZ%2Fbj8%2FaOTeSBZ0cA4NCQt%2BLMgPTljOOxFBjJA5CuFsDfynkT0HXw%3D%3D&pageNo=1&numOfRows=1200&sgId=20200415&sgTypecode=2
+
+resp = requests.get(URL3)
 json_result = json.loads(resp.text)
-# print(json_result)
-
-city_list = json_result['getCommonSggCodeList']['item']
-
-index=0
-for i in city_list:
-    print(index)
-    print('',i['SGG_NAME'])
-    print('', i['SD_NAME'])
-    print('', i['WIW_NAME'])
-    print("========================================")
-    index +=1
+print(json_result)

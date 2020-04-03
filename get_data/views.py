@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .models import Party, PartyPolicy, City
+from .models import Party, PartyPolicy, City,Gungu
 import json
 import requests
 
@@ -44,15 +44,21 @@ URL2 = 'http://apis.data.go.kr/9760000/CommonCodeService/getCommonSggCodeList?se
 
 def makecity(request):
     pagenum_list = [1, 2, 3]
-
+    del_gungu = Gungu.objects.all()
+    del_gungu.delete()
+   
     for pagenum in pagenum_list:
         resp = requests.get(URL2+'&pageNo=' + str(pagenum) +'&numOfRows=100')
         json_result = json.loads(resp.text)
         city_list = json_result['getCommonSggCodeList']['item']
         
         for j in city_list:
-            print(j['SD_NAME'])
-            print(j['WIW_NAME'])
+            Gungu.objects.create(sd_name=City.objects.get(
+                name=j['SD_NAME']), name=j['WIW_NAME'], sgg_name=j['SGG_NAME'])
+            print(j['SD_NAME'], j['WIW_NAME'], '-', j['SGG_NAME'])
+
+
+
             # if City.objects.filter(name=j['SD_NAME']).exists():
             #     pass
             # else:
