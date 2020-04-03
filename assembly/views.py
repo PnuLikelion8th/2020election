@@ -19,6 +19,3 @@ def index(request):
     response_body = urllib.request.urlopen(requests).read()
     
     return render(request,'index.html',{'res':response_body})
-
-def assembly(request):
-    return render(request, 'quiz.html')
