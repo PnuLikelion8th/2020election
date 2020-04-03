@@ -20,19 +20,21 @@
             내 생각과 우리 지역구 후보자의 공약은 얼마나 비슷할까요?
         </p>
         <div class="dropdown">
-            <button class="dropbtn">시/도 선택</button>
-            <div class="dropdown-content">
-                {% for i in cities.all %}
-                <a href="#">{{i.name}}</a>
-                {% endfor %}
-            </div>
+            <form method="GET">
+                <button class="dropbtn">시/도 선택</button>
+                <div class="dropdown-content">
+                    {% for i in cities.all %}
+                        <button type="submit" value={{i.id}} name="cities">{{i.name}}</button>
+                    {% endfor %}
+                </div>
+            </form>
         </div>
         <br>
         <br>
         <div class="dropdown">
             <button class="dropbtn">지역구 선택</button>
             <div class="dropdown-content">
-                {% for j in gungus.all %}
+                {% for j in gungus %}
                 <a href="#">{{j.sgg_name}}</a>
                 {% endfor %}
             </div>
