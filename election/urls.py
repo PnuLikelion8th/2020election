@@ -25,4 +25,6 @@ urlpatterns = [
     path('map/', map.views.promise, name='map'),
     path('makeparty/', get_data.views.makeparty,name="makeparty"),
     path('makecity/', get_data.views.makecity, name="makecity"),
+    path('makecandi/', get_data.views.makecandi, name="makecandi"),
+
 ]

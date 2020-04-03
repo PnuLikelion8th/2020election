@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .models import Party, PartyPolicy, City,Gungu
+from .models import Party, PartyPolicy, City,Gungu,Candidate
 import json
 import requests
 
@@ -44,18 +44,18 @@ URL2 = 'http://apis.data.go.kr/9760000/CommonCodeService/getCommonSggCodeList?se
 
 def makecity(request):
     pagenum_list = [1, 2, 3]
-    del_gungu = Gungu.objects.all()
-    del_gungu.delete()
+    # del_gungu = Gungu.objects.all()
+    # del_gungu.delete()
    
-    for pagenum in pagenum_list:
-        resp = requests.get(URL2+'&pageNo=' + str(pagenum) +'&numOfRows=100')
-        json_result = json.loads(resp.text)
-        city_list = json_result['getCommonSggCodeList']['item']
+    # for pagenum in pagenum_list:
+    #     resp = requests.get(URL2+'&pageNo=' + str(pagenum) +'&numOfRows=100')
+    #     json_result = json.loads(resp.text)
+    #     city_list = json_result['getCommonSggCodeList']['item']
         
-        for j in city_list:
-            Gungu.objects.create(sd_name=City.objects.get(
-                name=j['SD_NAME']), name=j['WIW_NAME'], sgg_name=j['SGG_NAME'])
-            print(j['SD_NAME'], j['WIW_NAME'], '-', j['SGG_NAME'])
+    #     for j in city_list:
+    #         Gungu.objects.create(sd_name=City.objects.get(
+    #             name=j['SD_NAME']), name=j['WIW_NAME'], sgg_name=j['SGG_NAME'])
+    #         print(j['SD_NAME'], j['WIW_NAME'], '-', j['SGG_NAME'])
 
 
 
@@ -63,4 +63,36 @@ def makecity(request):
             #     pass
             # else:
             #     City.objects.create(name=j['SD_NAME'])
+    return redirect('index')
+
+
+URL3 = 'http://apis.data.go.kr/9760000/PofelcddInfoInqireService/getPofelcddRegistSttusInfoInqire?serviceKey=1xchWYQzhGHEZWwvB6UCLFzMCUxgox9p4lZ%2Fbj8%2FaOTeSBZ0cA4NCQt%2BLMgPTljOOxFBjJA5CuFsDfynkT0HXw%3D%3D&pageNo=1&numOfRows=1200&sgId=20200415&sgTypecode=2&resultType=json'
+
+def makecandi(request):
+    resp = requests.get(URL3)
+    json_result = json.loads(resp.text)
+    candi_list = json_result['getPofelcddRegistSttusInfoInqire']['item']
+    index = 1
+    for i in candi_list:
+        Candidate.objects.create(
+            candi_id=i['HUBOID'],
+            sggname=Gungu.objects.get(
+                sd_name=City.objects.get(name=i['SD_NAME']), sgg_name=i['SGG_NAME'], name=i['WIW_NAME']),
+            giho_num=i['GIHO'],
+            jdname=Party.objects.get(name=i['JD_NAME']),
+            name=i['NAME'],
+            gender=i['GENDER'],
+            birth = i['BIRTHDAY'],
+            age=i['AGE'],
+            addr = i['ADDR'],
+            job = i['JOB'],
+            edu = i['EDU'],
+            career1=i['CAREER1'],
+            career2 = i['CAREER2'],
+            status = i['STATUS']
+        )
+        print(str(index) + '...')
+        index+=1
+    # del_candi = Candidate.objects.all()
+    # del_candi.delete()
     return redirect('index')
