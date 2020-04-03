@@ -8,59 +8,86 @@
     <link rel="stylesheet" type="text/css" href="{% static 'index.css' %}">
 </head>
 <body>
-    <section>
-        <h1 class="title">
-            우리는
+    <section class="mainpage">
+        <h1 class="title">우리는
             <br>
             얼마나
             <br>
             생각이
             <br>
-            비-슷할까
-        </h1>
+            비-슷할까</h1>
         <p class="title-comment">
             내 생각과 우리 지역구 후보자의 공약은 얼마나 비슷할까요?
         </p>
-    </section>
-    <section>
-        <h2 class="select-area">선거구를 선택해 주세요</h2>
-        <div>
-            <button type="button">시/도 선택
-            </button>
+        <div class="dropdown">
+            <button class="dropbtn">시/도 선택</button>
+            <div class="dropdown-content">
+                {% for i in cities.all %}
+                <a href="#">{{i.name}}</a>
+                {% endfor %}
+            </div>
         </div>
-        <div>
-            <button type="button">지역구 선택</button>
+        <br>
+        <br>
+        <div class="dropdown">
+            <button class="dropbtn">지역구 선택</button>
+            <div class="dropdown-content">
+                {% for j in gungus.all %}
+                <a href="#">{{j.sgg_name}}</a>
+                {% endfor %}
+            </div>
         </div>
     </section>
-    <section>
-        <h2>나와의 공약 궁합을
-            <br>
-            확인하고 싶은
+    <br>
+    <br>
+    <section class="who">
+        <h2>나와의 공약 궁합을 확인하고 싶은
             <br>
             후보자를 선택해봐요
         </h2>
-        <div>
+        <div class="whoWrap">
             <ul>
                 <li>
-                    <div>
-                        후보자사진
+                    <div class="image-cropper">
+                        <img src="{% static 'cha.jpg' %}">
                     </div>
-                    <p>김뫄뫄</p>
-                    <p>마당</p>
+                    <p class="candidatename">김뫄뫄</p>
+                    <p class="partyname">마당</p>
                 </li>
                 <li>
-                    <div>
-                        후보자사진
+                    <div class="image-cropper">
+                        <img src="{% static 'cha.jpg' %}">
                     </div>
-                    <p>최솨솨</p>
-                    <p>멋사당</p>
+                    <p class="candidatename">최솨솨</p>
+                    <p class="partyname">멋사당</p>
                 </li>
                 <li>
-                    <div>
-                        후보자사진
+                    <div class="image-cropper">
+                        <img src="{% static 'cha.jpg' %}">
                     </div>
-                    <p>이롸로ㅏ</p>
-                    <p>고양이당</p>
+                    <p class="candidatename">이롸로ㅏ</p>
+                    <p class="partyname">고양이당</p>
+                </li>
+                <li>
+                    <div class="image-cropper">
+                        <img src="{% static 'cha.jpg' %}">
+                    </div>
+                    <p class="candidatename">최솨솨</p>
+                    <p class="partyname">멋사당</p>
+                </li>
+                <li>
+                    <div class="image-cropper">
+                        <img src="{% static 'cha.jpg' %}">
+                    </div>
+                    <p class="candidatename">최솨솨</p>
+                    <p class="partyname">멋사당</p>
+                </li>
+                <li>
+                    <div class="image-cropper">
+                        <img src="{% static 'cha.jpg' %}">
+                    </div>
+                    <p class="candidatename">최솨솨</p>
+                    <p class="partyname">멋사당</p>
                 </li>
             </ul>
         </div>
@@ -71,57 +98,199 @@
             나의 생각을 선택해주세요
         </h2>
         <!-- 좌우스크롤 질문카드 -->
+        <div class="cardWrap" -ms-overflow-style: none;>
+            <div class="card">
+                <div class="container">
+                <p>
+                    금정구 육아환경 개선을 위해
+                </p>
+                <div class="selectWrap">
+                    <div class = "select">
+                        <button class = "select-btn">방과후 교육시설 확충</button>
+                    </div>
+                    <div class = "select">
+                        <button class = "select-btn">유모차 대여</button>
+                    </div>
+                    <div class = "select">
+                        <button class = "select-btn">학원 교습비 동백전 할인 지원</button>
+                    </div>
+                    <div class = "select">
+                        <button class = "select-btn">어린이 공공 체육시설 건립</button>
+                    </div>
+                </div>
+                <p>
+                    이 가장 필요하다고 생각한다.
+                </p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="container">
+                <p>
+                    금정구 육아환경 개선을 위해
+                </p>
+                <div class="selectWrap">
+                    <div class = "select">
+                        <button class = "select-btn">방과후 교육시설 확충</button>
+                    </div>
+                    <div class = "select">
+                        <button class = "select-btn">유모차 대여</button>
+                    </div>
+                    <div class = "select">
+                        <button class = "select-btn">학원 교습비 동백전 할인 지원</button>
+                    </div>
+                    <div class = "select">
+                        <button class = "select-btn">어린이 공공 체육시설 건립</button>
+                    </div>
+                </div>
+                <p>
+                    이 가장 필요하다고 생각한다.
+                </p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="container">
+                <p>
+                    금정구 육아환경 개선을 위해
+                </p>
+                <div class="selectWrap">
+                    <div class = "select">
+                        <button class = "select-btn">방과후 교육시설 확충</button>
+                    </div>
+                    <div class = "select">
+                        <button class = "select-btn">유모차 대여</button>
+                    </div>
+                    <div class = "select">
+                        <button class = "select-btn">학원 교습비 동백전 할인 지원</button>
+                    </div>
+                    <div class = "select">
+                        <button class = "select-btn">어린이 공공 체육시설 건립</button>
+                    </div>
+                </div>
+                <p>
+                    이 가장 필요하다고 생각한다.
+                </p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="container">
+                <p>
+                    금정구 육아환경 개선을 위해
+                </p>
+                <div class="selectWrap">
+                    <div class = "select">
+                        <button class = "select-btn">방과후 교육시설 확충</button>
+                    </div>
+                    <div class = "select">
+                        <button class = "select-btn">유모차 대여</button>
+                    </div>
+                    <div class = "select">
+                        <button class = "select-btn">학원 교습비 동백전 할인 지원</button>
+                    </div>
+                    <div class = "select">
+                        <button class = "select-btn">어린이 공공 체육시설 건립</button>
+                    </div>
+                </div>
+                <p>
+                    이 가장 필요하다고 생각한다.
+                </p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="container">
+                <p>
+                    금정구 육아환경 개선을 위해
+                </p>
+                <div class="selectWrap">
+                    <div class = "select">
+                        <button class = "select-btn">방과후 교육시설 확충</button>
+                    </div>
+                    <div class = "select">
+                        <button class = "select-btn">유모차 대여</button>
+                    </div>
+                    <div class = "select">
+                        <button class = "select-btn">학원 교습비 동백전 할인 지원</button>
+                    </div>
+                    <div class = "select">
+                        <button class = "select-btn">어린이 공공 체육시설 건립</button>
+                    </div>
+                </div>
+                <p>
+                    이 가장 필요하다고 생각한다.
+                </p>
+                </div>
+            </div>
+        </div>
     </section>
-    <section>
+    <section class="resultWrap">
         <h2>나와 김뫄뫄 후보의 생각은</h2>
         <div>비슷해요</div>
-        <p>
-            김뫄뫄 후보는 재선 후보에요.
-            온천천 수질개선 ,어쩌구어저꾸 정책을 공약으로 삼았어요.
-        </p>
-        <p>
-            이 후보의 지난 국회 본회의 출석률은 00%에요.
-        </p>
-        <a onclick="this.nextSibling.style.display=(this.nextSibling.style.display=='none')?'block':'none';" href="javascript:void(0)">
-            김뫄뫄 후보 기본정보 보기
-            </a>
-            <div style="DISPLAY: none">
-            어쩌구 초등학교 졸업
-            무슨무슨 경력...
+        <br>
+        <br>
+        <div class="result">
+            <div>
+                김뫄뫄 후보는 재선 후보에요.
             </div>
-        <div>어때요? 생각한 만큼 비슷한가요?</div>
+            <br>
+            <div>
+                온천천 수질개선 ,어쩌구어저꾸 정책을 공약으로 삼았어요.
+            </div>
+            <br>
+            <div>
+                이 후보의 지난 국회 본회의 출석률은 00%에요.
+            </div>
+            <br>
+            <a onclick="this.nextSibling.style.display=(this.nextSibling.style.display=='none')?'block':'none';" href="javascript:void(0)">
+                김뫄뫄 후보 기본정보 보기
+                </a>
+                <div style="display: none">
+                어쩌구 초등학교 졸업
+                무슨무슨 경력...
+                </div>
+                <br>
+                <br>
+                <br>
+                <br>
+            <div>어때요? 생각한 만큼 비슷한가요?</div>
+        </div>
     </section>
     <section>
         <h2>다른 후보와의
             <br>
             공약 궁합도 살펴봐요!
         </h2>
-        <div>
+        <div class="whoWrap">
             <ul>
                 <li>
-                    <div>
-                        후보자사진
+                    <div class="image-cropper">
+                        <img src="{% static 'cha.jpg' %}">
                     </div>
-                    <p>김뫄뫄</p>
-                    <p>마당</p>
+                    <p class="candidatename">김뫄뫄</p>
+                    <p class="partyname">마당</p>
                 </li>
                 <li>
-                    <div>
-                        후보자사진
+                    <div class="image-cropper">
+                        <img src="{% static 'cha.jpg' %}">
                     </div>
-                    <p>최솨솨</p>
-                    <p>멋사당</p>
+                    <p class="candidatename">최솨솨</p>
+                    <p class="partyname">멋사당</p>
                 </li>
                 <li>
-                    <div>
-                        후보자사진
+                    <div class="image-cropper">
+                        <img src="{% static 'cha.jpg' %}">
                     </div>
-                    <p>이롸로ㅏ</p>
-                    <p>고양이당</p>
+                    <p class="candidatename">이롸로ㅏ</p>
+                    <p class="partyname">고양이당</p>
+                </li>
+                <li>
+                    <div class="image-cropper">
+                        <img src="{% static 'cha.jpg' %}">
+                    </div>
+                    <p class="candidatename">최솨솨</p>
+                    <p class="partyname">멋사당</p>
                 </li>
             </ul>
         </div>
     </section>
-    {{res}}
+
 </body>
 </html>
