@@ -1,0 +1,28 @@
+
+.party_container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+
+.choice_container{
+    border:1px solid red;
+    position: relative;
+    overflow: hidden;
+    width:320px;
+    height:500px;
+    display: flex;
+    flex-direction: column;
+}
+
+.top,.bottom{
+    flex:10;
+    border:2px solid green;
+}
+.divider_line{
+    flex:1;
+    border:2px solid black;
+    text-align: center;
+}

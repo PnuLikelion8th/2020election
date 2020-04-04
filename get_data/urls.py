@@ -15,17 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from assembly import views
-import map.views
-
+from . import views
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', views.index, name='index'),
-    path('map/', map.views.promise, name='map'),
 
-
-    path('choiceparty/', include('choiceparty.urls')),
-    path('get_data/', include('get_data.urls')),
-  
+    path('makeparty/', views.makeparty, name="makeparty"),
+    path('makecity/', views.makecity, name="makecity"),
+    path('makecandi/', views.makecandi, name="makecandi"),
 
 ]

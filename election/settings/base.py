@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'assembly.apps.AssemblyConfig',
     #이거는 맵
     'map.apps.MapConfig',
+    #정당비교 앱
+    'choiceparty',
 ]
 
 MIDDLEWARE = [
