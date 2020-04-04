@@ -9,20 +9,33 @@
 
 .choice_container{
     border:1px solid red;
-    position: relative;
-    overflow: hidden;
     width:320px;
     height:500px;
-    display: flex;
-    flex-direction: column;
 }
 
 .top,.bottom{
-    flex:10;
+    height:240px;
     border:2px solid green;
+    display: flex;
+    overflow: hidden;
 }
 .divider_line{
-    flex:1;
+    height:20px;
     border:2px solid black;
     text-align: center;
+}
+.card{
+    display: inline-block;
+    height:240px;
+    border:1px solid green;
+    background-color: hotpink;
+    width:320px;
+    min-width: 320px;
+    transition: all 0.3s ease-out;
+
+}
+
+
+.zero_width{
+    min-width: 0;
 }

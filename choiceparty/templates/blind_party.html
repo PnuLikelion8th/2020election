@@ -8,22 +8,81 @@
     <title>Document</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/blind_party.css' %}">
 </head>
-<body>
+<body> 
     <div class="party_container">
         
         <h1>나는..
-        {%if msg != "None" %}
-        {{msg}}
-        {% endif %}</h1>
+            <!-- {%if msg != None %}
+                {{msg}}
+            {% endif %}  -->
+        </h1>
+
         <section class="choice_container">
             <article class="top">
-               A 정당
+                <input type="radio" name="party1" id="party_t_1">
+                <input type="radio" name="party2" id="party_t_2">
+                <input type="radio" name="party3" id="party_t_3">
+                <input type="radio" name="party4" id="party_t_4">
+                <input type="radio" name="party5" id="party_t_5">
+                <input type="radio" name="party6" id="party_t_6">
+                <input type="radio" name="party7" id="party_t_7">
+                <input type="radio" name="party8" id="party_t_8">
+                <input type="radio" name="party9" id="party_t_9">
+                <input type="radio" name="party10" id="party10">
+
+                <label for="party_t_1" class="card card1" onclick="hide()">1</label>
+                <label for="party_t_2" class="card card2" onclick="hide()">2</label>
+                <label for="party_t_3" class="card card3" onclick="hide()">3</label>
+                <label for="party_t_4" class="card card4" onclick="hide()">4</label>
+                <label for="party_t_5" class="card card5" onclick="hide()">5</label>
+                <label for="party_t_6" class="card card6" onclick="hide()">6</label>
+                <label for="party_t_7" class="card card7" onclick="hide()">7</label>
+                <label for="party_t_8" class="card card8" onclick="hide()">8</label>
+                <label for="party_t_9" class="card card9" onclick="hide()">9</label>
+                <label for="party_t_10" class="card card10" onclick="hide()">0</label>
+
             </article>
+
             <div class="divider_line"> VS </div>
+
             <article class="bottom">
-                B 정당
+                <input type="radio" name="party1" id="party_b_1">
+                <input type="radio" name="party2" id="party_b_2">
+                <input type="radio" name="party3" id="party_b_3">
+                <input type="radio" name="party4" id="party_b_4">
+                <input type="radio" name="party5" id="party_b_5">
+                <input type="radio" name="party6" id="party_b_6">
+                <input type="radio" name="party7" id="party_b_7">
+                <input type="radio" name="party8" id="party_b_8">
+                <input type="radio" name="party9" id="party_b_9">
+                <input type="radio" name="party10" id="party_b_10">
+
+                <label for="party_b_1" class="card card1" onclick="hide()">1</label>
+                <label for="party_b_2" class="card card2" onclick="hide()">2</label>
+                <label for="party_b_3" class="card card3" onclick="hide()">3</label>
+                <label for="party_b_4" class="card card4" onclick="hide()">4</label>
+                <label for="party_b_5" class="card card5" onclick="hide()">5</label>
+                <label for="party_b_6" class="card card6" onclick="hide()">6</label>
+                <label for="party_b_7" class="card card7" onclick="hide()">7</label>
+                <label for="party_b_8" class="card card8" onclick="hide()">8</label>
+                <label for="party_b_9" class="card card9" onclick="hide()">9</label>
+                <label for="party_b_10" class="card card10" onclick="hide()">0</label>
+
             </article>
         </section>
+
     </div>
 </body>
+<script>
+   
+    function hide(){
+        console.log(this.event.target.classList)
+        console.log(document.querySelectorAll('.'+this.event.target.classList[1]))
+        cho_list = document.querySelectorAll('.' + this.event.target.classList[1])
+        cho_list[0].classList.add('zero_width')
+        cho_list[1].classList.add('zero_width')
+    }
+
+
+</script>
 </html>
