@@ -10,7 +10,11 @@
 </head>
 <body>
     <div class="party_container">
-        <h1>나는..</h1>
+        
+        <h1>나는..
+        {%if msg != "None" %}
+        {{msg}}
+        {% endif %}</h1>
         <section class="choice_container">
             <article class="top">
                A 정당
