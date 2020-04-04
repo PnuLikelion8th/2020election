@@ -28,7 +28,6 @@
     display: inline-block;
     height:240px;
     border:1px solid green;
-    background-color: hotpink;
     width:320px;
     min-width: 320px;
     transition: all 0.3s ease-out;
@@ -45,4 +44,3 @@
     display: none;
 }
 
-.top:last-child

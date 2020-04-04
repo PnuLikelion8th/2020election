@@ -12,9 +12,9 @@
     <div class="party_container">
         
         <h1>나는..
-            <!-- {%if msg != None %}
+            {%if msg != None %}
                 {{msg}}
-            {% endif %}  -->
+            {% endif %} 
         </h1>
 
         <section class="choice_container">
@@ -27,8 +27,8 @@
                     {%for i in top %}
                         <input type="radio" name="party{{forloop.counter}}" value={{i}} id="party_t_{{forloop.counter}}">
                         <label for="party_t_{{forloop.counter}}" class="card card{{forloop.counter}}"
-                            onclick="hide()">{{forloop.counter}}</label>
-                            
+                            onclick="hide()">{{forloop.counter}}{{i}}</label>
+                        
                     {%endfor%}
                 </article>
 
@@ -38,7 +38,7 @@
                 <article class="bottom">
                     {%for i in bottom %}
                         <input type="radio" name="party{{forloop.counter}}" value={{i}} id="party_b_{{forloop.counter}}">
-                        <label for="party_b_{{forloop.counter}}" class="card card{{forloop.counter}}" onclick="hide()">{{forloop.counter}}</label>
+                        <label for="party_b_{{forloop.counter}}" class="card card{{forloop.counter}}" onclick="hide()">{{forloop.counter}}{{i}}</label>
 
                     {%endfor%}
 
