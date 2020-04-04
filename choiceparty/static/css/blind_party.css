@@ -32,10 +32,17 @@
     width:320px;
     min-width: 320px;
     transition: all 0.3s ease-out;
-
+    cursor: pointer;
 }
 
 
 .zero_width{
     min-width: 0;
 }
+
+.top input[type="radio"],
+.bottom input[type="radio"]{
+    display: none;
+}
+
+.top:last-child
