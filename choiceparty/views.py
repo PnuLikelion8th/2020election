@@ -1,6 +1,11 @@
 from django.shortcuts import render
 from get_data.models import Party
+from django.db.models import Q
+from functools import reduce
+
 import random
+
+
 # Create your views here.
 def blind_party(request):
     # temp_list=list(range(1, 52))
@@ -10,12 +15,15 @@ def blind_party(request):
     if request.method == 'POST':
         #넘어오는 쿼리를 dict으로 해서 muttable하게 해준다.
         tmp_dict = dict(request.POST)
+
         # 토큰 제거
         del tmp_dict['csrfmiddlewaretoken']
-        
-        #dict에서 value값인 정당 가져오기
-        tmp_list = list(tmp_dict.values())
-        random.shuffle(tmp_list)
+        # 우리가 받은 str을 Q set을 이용하여 복수개의 condition을 설정해준다
+        multi_get_condition = [Q(name=i[0]) for i in list(tmp_dict.values())]
+        condi_q = reduce(lambda  x,y: x | y, multi_get_condition)
+        tmp_list = Party.objects.filter(condi_q).order_by(
+            '?').prefetch_related('partypolicy_set')
+
 
         len_tmp_party = len(tmp_list)
 
