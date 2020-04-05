@@ -12,23 +12,43 @@
     <div class="party_container">
         
         <h1>나는..
-            {%if msg != None %}
-                {{msg}}
-            {% endif %} 
+         
         </h1>
 
         <section class="choice_container">
+            {%if msg != None %}
+            <div onclick="hide_door()" class="party_choice_door">
+                어떤 정당이 부전승으로 올라갔습니다.
+            </div>
+            {% endif %}
+            <div onclick="hide_door()" class="party_choice_door">
+                {% if len_party == 2%}
+                    결승전 시작하기
+                {%else%}
+                    {{len_party}}강 시작하기
+                {%endif%}
+            </div>
+           
+            {%if all_party.all|length == 1 %}
+
+            끝!!!
+                {%for i in all_party%}
+                {{i}}
+                {%endfor%}
+            {%else%}
             <form method = "POST">
                 {%csrf_token%}
-
+               
                 <input type="hidden" name="unearned" value={{unearned}}>
-
+                
                 <article class="top">
                     {%for i in top %}
-                        <input type="radio" name="party{{forloop.counter}}" value={{i}} id="party_t_{{forloop.counter}}">
-                        <label for="party_t_{{forloop.counter}}" class="card card{{forloop.counter}}"
-                            onclick="hide()">{{forloop.counter}}{{i}}</label>
-                        
+                        <input onchange="hide()" type="radio" name="party{{forloop.counter}}" value={{i}} id="party_t_{{forloop.counter}}">
+                        <label for="party_t_{{forloop.counter}}" class="card card{{forloop.counter}}">{{forloop.counter}}
+                            {% for j in i.partypolicy_set.all %}
+                                {{j.title}}<br>
+                            {%endfor%}
+                        </label>
                     {%endfor%}
                 </article>
 
@@ -37,8 +57,8 @@
 
                 <article class="bottom">
                     {%for i in bottom %}
-                        <input type="radio" name="party{{forloop.counter}}" value={{i}} id="party_b_{{forloop.counter}}">
-                        <label for="party_b_{{forloop.counter}}" class="card card{{forloop.counter}}" onclick="hide()">{{forloop.counter}}{{i}}</label>
+                        <input onchange="hide()" type="radio" name="party{{forloop.counter}}" value={{i}} id="party_b_{{forloop.counter}}">
+                        <label for="party_b_{{forloop.counter}}" class="card card{{forloop.counter}}" >{{forloop.counter}}{{i}}</label>
 
                     {%endfor%}
 
@@ -50,26 +70,46 @@
 
 
             </form>
-
+            {%endif%}
         </section>
-
+        <div>
+            TOP:
+            {%for i in top %}
+                {{i}}
+            
+            {%endfor%}
+        </div>
+        <div>
+            BOTTOM:
+            {%for i in bottom %}
+            {{i}}
+        
+            {%endfor%}
+        </div>
     </div>
 </body>
 <script>
    
     function hide(){
+        cho_list = document.querySelectorAll('.' + this.event.target.nextSibling.nextSibling.classList[1])
         
-        cho_list = document.querySelectorAll('.' + this.event.target.classList[1])
-        
+        //min width줄여서 애니메이션 효과 들어가도록 제작
         cho_list[0].classList.add('zero_width')
         cho_list[1].classList.add('zero_width')
+        //클릭하면 해당 div 내 text제거되게함
+        cho_list[0].innerHTML = ""
+        cho_list[1].innerHTML = ""
+
 
         if  (this.event.target.innerHTML === document.querySelector('.top label:last-child').innerHTML){
             document.querySelector('.choice_container > form').submit()
         }
 
     }
-
+    function hide_door(){
+                this.event.target.classList.add('close_door')
+                this.event.target.innerHTML = ""
+    }
     
 </script>
 </html>

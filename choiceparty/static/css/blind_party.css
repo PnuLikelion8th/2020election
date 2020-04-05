@@ -11,6 +11,7 @@
     border:1px solid red;
     width:320px;
     height:500px;
+    position: relative;
 }
 
 .top,.bottom{
@@ -33,12 +34,28 @@
     transition: all 0.3s ease-out;
     cursor: pointer;
 }
-
+.party_choice_door{
+    display: flex;
+    height:100%;
+    width:320px;
+    transition: all 0.3s ease-out;
+    cursor: pointer;
+    position: absolute;
+    background: white;
+    justify-content: center;
+    align-items: center;
+    line-height: 1.5;
+    font-size:2rem;
+    font-weight: 800;
+}
 
 .zero_width{
     min-width: 0;
 }
+.close_door{
+    height:0;
 
+}
 .top input[type="radio"],
 .bottom input[type="radio"]{
     display: none;
