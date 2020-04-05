@@ -189,3 +189,24 @@ body{
     transition: all 0.1s ease-out;
 
 }
+.result_party{
+    width:100%;
+    height:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size:1.5rem;
+    text-align: center;
+    font-weight: 800;
+    color:#ccc;
+}
+.result_party > span{
+    font-size:2.5rem;
+    color:#444;
+}
+.review_party{
+    margin-top:50px;
+color: #444;
+
+}

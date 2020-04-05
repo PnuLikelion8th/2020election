@@ -19,11 +19,40 @@
             {%if all_party.all|length == 1 %}
             <div class="result_party">
 
-            당신의 선택은            
+            당신의 선택은<br>       
                 {%for i in all_party%}
-                    {{i}}
+                    <span>{{i}}</span>
                 {%endfor%}
                 입니다
+                <div class="review_party">
+                {%for i in all_party%}
+                    {{i}}공약 다시 보기
+                    
+
+                    {%if i.partypolicy_set.all|length > 0 %}
+                    {% for j in i.partypolicy_set.all %}
+                    <div onclick="open_detail()" class="policy_item">
+                        {{j.flexible_title}}
+                    
+                    </div>
+                    
+                    <div class="policy_detail policy_detail{{j.number}}">
+                        <div>
+                            <div onclick="close_detail()" class="policy_detail_close">닫기</div>
+                            <strong>{{j.title}}</strong>- ({{j.category}})<br>
+                            {{j.desc|linebreaks}}
+                    
+                        </div>
+                    </div>
+                    {%endfor%}
+                    {%else%}
+                    <span>제출한 정당정책이 없습니다.</span>
+                    {%endif%}
+
+
+
+                {%endfor%}
+                </div>
             </div>
             {%else%}
 
