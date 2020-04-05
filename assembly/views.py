@@ -19,10 +19,9 @@ def index(request):
         temp_gungus = request.GET.get('gungus')
         context = {'cities' : cities, 'temp_cities':temp_cities, 'gungus' :gungus,'temp_gungus':temp_gungus, 'candidates':candidates, 'parties':parties, 'partypolicies':partypolicies}
         return render(request, 'index.html', context)
-        pass
+
 
     elif request.GET.get('cities'):
-        print("시티즈들어온다~")
         gungus=Gungu.objects.filter(sd_name = City.objects.get(name=request.GET['cities']))
         temp_cities = request.GET.get('cities')
         context = {'cities' : cities, 'temp_cities':temp_cities, 'gungus' :gungus, 'candidates':candidates, 'parties':parties, 'partypolicies':partypolicies}
