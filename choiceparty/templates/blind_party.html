@@ -16,64 +16,80 @@
         </h1>
 
         <section class="choice_container">
-            {%if msg != None %}
-            <div onclick="hide_door()" class="party_choice_door">
-                어떤 정당이 부전승으로 올라갔습니다.
-            </div>
-            {% endif %}
-            <div onclick="hide_door()" class="party_choice_door">
-                {% if len_party == 2%}
-                    결승전 시작하기
-                {%else%}
-                    {{len_party}}강 시작하기
-                {%endif%}
-            </div>
+            
            
             {%if all_party.all|length == 1 %}
 
-            끝!!!
+                끝!!!
                 {%for i in all_party%}
-                {{i}}
+                    {{i}}
                 {%endfor%}
             {%else%}
+
+            {%if msg != None %}
+
+                <div onclick="hide_door()" class="party_choice_door">
+                    어떤 정당이 부전승으로 올라갔습니다.
+                </div>
+            {% endif %}
+                <div onclick="hide_door()" class="party_choice_door">
+                    {% if len_party == 2%}
+                    결승전 시작하기
+                    {%else%}
+                    {{len_party}}강 시작하기
+                    {%endif%}
+                </div>
+
             <form method = "POST">
                 {%csrf_token%}
                
                 <input type="hidden" name="unearned" value={{unearned}}>
                 
                 <article class="top">
-                    {%for i in top %}   
-                        <input onchange="hide()" type="radio" name="party{{forloop.counter}}" value={{i}} id="party_t_{{forloop.counter}}">
-                        <label for="party_t_{{forloop.counter}}" class="card card{{forloop.counter}}">{{forloop.counter}}
+                    {%for i in top %}
+                    <input onchange="hide()" type="radio" name="party{{forloop.counter}}" value={{i}} id="party_t_{{forloop.counter}}">
+
+                    <div class="card card{{forloop.counter}}">   
+                        
+                        <label for="party_t_{{forloop.counter}}"">
+                            다음페이지로
+
+                        </label>
+
                             {%if i.partypolicy_set.all|length > 0 %}
                                 {% for j in i.partypolicy_set.all %}
-                                    <div class="policy_item">{{j.title}}</div>
+                                    <div onclick="open_detail()" class="policy_item">
+                                        {{j.title}}</div>
                                 {%endfor%}
                             {%else%}
                                 제출한 정당정책이 없습니다.
                             {%endif%}
-                        </label>
+                    </div>
                     {%endfor%}
                 </article>
 
 
-                <div class="divider_line"> VS </div>
+                <div class="divider_line"> 번호를 누르면 자세히 볼수있어요! </div>
 
                 <article class="bottom">
                     {%for i in bottom %}
                         <input onchange="hide()" type="radio" name="party{{forloop.counter}}" value={{i}} id="party_b_{{forloop.counter}}">
-                        <label for="party_b_{{forloop.counter}}" class="card card{{forloop.counter}}" >{{forloop.counter}}
+
+                        <div class="card card{{forloop.counter}}">
+
+                            <label for="party_b_{{forloop.counter}}" > 다음페이지로
+                            </label>
+
+                                {%if i.partypolicy_set.all|length > 0 %}
+                                    {% for j in i.partypolicy_set.all %}
+                                    <div class="policy_item">{{j.number}}<br>
+                                        {{j.title}}</div>
+                                    {%endfor%}
+                                {%else%}
+                                    제출한 정당정책이 없습니다.
+                                {%endif%}
                             
-
-                            {%if i.partypolicy_set.all|length > 0 %}
-                                {% for j in i.partypolicy_set.all %}
-                                <div class="policy_item">{{j.title}}</div>
-                                {%endfor%}
-                            {%else%}
-                                제출한 정당정책이 없습니다.
-                            {%endif%}
-                        </label>
-
+                        </div>
                     {%endfor%}
 
                 </article>
@@ -113,8 +129,7 @@
         cho_list[0].innerHTML = ""
         cho_list[1].innerHTML = ""
 
-
-        if  (this.event.target.innerHTML === document.querySelector('.top label:last-child').innerHTML){
+        if  (this.event.target.name.substr(5) === document.querySelector('.top > div:last-child').classList[1].substr(4)){
             document.querySelector('.choice_container > form').submit()
         }
 
@@ -123,6 +138,8 @@
                 this.event.target.classList.add('close_door')
                 this.event.target.innerHTML = ""
     }
-    
+    function open_detail(){
+
+    }
 </script>
 </html>

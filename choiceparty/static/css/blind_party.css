@@ -25,13 +25,23 @@
     text-align: center;
 }
 .card{
-    display: inline-block;
+    display: inline-flex;
+    flex-wrap: wrap;
     height:240px;
     width:320px;
     min-width: 320px;
     transition: all 0.3s ease-out;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.card > label{
+    position: absolute;
+    right:10px;
+    bottom:10px;
     cursor: pointer;
 }
+
 .party_choice_door{
     display: flex;
     height:100%;
@@ -45,6 +55,7 @@
     line-height: 1.5;
     font-size:2rem;
     font-weight: 800;
+    z-index:1;
 }
 
 .zero_width{
@@ -62,5 +73,11 @@
 
 
 .policy_item{
-    font-size:0.8rem;
+    font-size:0.85rem;
+    border:1px solid black;
+    width:130px;
+    margin:5px;
+    height:30px;
+    text-align: center;
+    cursor: pointer;
 }
