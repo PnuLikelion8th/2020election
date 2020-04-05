@@ -25,6 +25,12 @@ class PartyPolicy(models.Model):
     def __str__(self):
         return str(self.name)
 
+    def flexible_title(self):
+        if len(self.title)>18:
+            return self.title[:18] + "..."
+        
+        return self.title
+
 
 
 

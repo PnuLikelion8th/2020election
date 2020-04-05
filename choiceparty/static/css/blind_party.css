@@ -34,14 +34,18 @@
     justify-content: center;
     align-items: center;
     position: relative;
+    padding-right:50px;
+    box-sizing: border-box;
 }
 .card > label{
     position: absolute;
-    right:10px;
-    bottom:10px;
+    right:5px;
+    bottom:5px;
     cursor: pointer;
 }
-
+.card > label > img{
+    height:50px;
+}
 .party_choice_door{
     display: flex;
     height:100%;
@@ -60,6 +64,7 @@
 
 .zero_width{
     min-width: 0;
+    padding:0;
 }
 .close_door{
     height:0;
@@ -73,11 +78,11 @@
 
 
 .policy_item{
-    font-size:0.85rem;
+    font-size:0.8rem;
     border:1px solid black;
-    width:130px;
+    width:120px;
     margin:5px;
-    height:30px;
+    height:35px;
     text-align: center;
     cursor: pointer;
 }

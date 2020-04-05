@@ -52,14 +52,14 @@
                     <div class="card card{{forloop.counter}}">   
                         
                         <label for="party_t_{{forloop.counter}}"">
-                            다음페이지로
+                            <img src="{% static 'image/election_icon.png' %}" alt="선택하기">
 
                         </label>
 
                             {%if i.partypolicy_set.all|length > 0 %}
                                 {% for j in i.partypolicy_set.all %}
                                     <div onclick="open_detail()" class="policy_item">
-                                        {{j.title}}</div>
+                                        {{j.flexible_title}}</div>
                                 {%endfor%}
                             {%else%}
                                 제출한 정당정책이 없습니다.
@@ -77,13 +77,14 @@
 
                         <div class="card card{{forloop.counter}}">
 
-                            <label for="party_b_{{forloop.counter}}" > 다음페이지로
+                            <label for="party_b_{{forloop.counter}}" > 
+                                    <img src=" {% static 'image/election_icon.png' %}" alt="선택하기">
                             </label>
 
                                 {%if i.partypolicy_set.all|length > 0 %}
                                     {% for j in i.partypolicy_set.all %}
-                                    <div class="policy_item">{{j.number}}<br>
-                                        {{j.title}}</div>
+                                    <div class="policy_item">
+                                        {{j.flexible_title}}</div>
                                     {%endfor%}
                                 {%else%}
                                     제출한 정당정책이 없습니다.
