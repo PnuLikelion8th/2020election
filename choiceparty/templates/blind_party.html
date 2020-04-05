@@ -11,86 +11,115 @@
 <body> 
     <div class="party_container">
         
-        <h1>나는..
-         
-        </h1>
+    
 
         <section class="choice_container">
-            {%if msg != None %}
-            <div onclick="hide_door()" class="party_choice_door">
-                어떤 정당이 부전승으로 올라갔습니다.
-            </div>
-            {% endif %}
-            <div onclick="hide_door()" class="party_choice_door">
-                {% if len_party == 2%}
-                    결승전 시작하기
-                {%else%}
-                    {{len_party}}강 시작하기
-                {%endif%}
-            </div>
+            
            
             {%if all_party.all|length == 1 %}
 
-            끝!!!
+                끝!!!
                 {%for i in all_party%}
-                {{i}}
+                    {{i}}
                 {%endfor%}
             {%else%}
+
+            {%if msg != None %}
+
+                <div onclick="hide_door()" class="party_choice_door">
+                    어떤 정당이 부전승으로 올라갔습니다.<br>
+                    <span>click!</span>
+                </div>
+            {% endif %}
+                <div onclick="hide_door()" class="party_choice_door">
+                    {% if len_party == 2%}
+                    결승전 시작하기<br>
+                    <span>click!</span>
+                    {%else%}
+                    {{len_party}}강 시작하기<br>
+                    <span>click!</span>
+                    {%endif%}
+                </div>
+
             <form method = "POST">
                 {%csrf_token%}
                
                 <input type="hidden" name="unearned" value={{unearned}}>
                 
                 <article class="top">
+
                     {%for i in top %}
-                        <input onchange="hide()" type="radio" name="party{{forloop.counter}}" value={{i}} id="party_t_{{forloop.counter}}">
-                        <label for="party_t_{{forloop.counter}}" class="card card{{forloop.counter}}">{{forloop.counter}}
-                            {% for j in i.partypolicy_set.all %}
-                                {{j.title}}<br>
-                            {%endfor%}
+
+                    <input onchange="hide()" type="radio" name="party{{forloop.counter}}" value={{i}} id="party_t_{{forloop.counter}}">
+
+                    <div class="card card{{forloop.counter}}">   
+
+                        <label for="party_t_{{forloop.counter}}"">
+                            <img src="{% static 'image/election_icon.png' %}" alt="선택하기">
+                            선 택
                         </label>
+
+                            {%if i.partypolicy_set.all|length > 0 %}
+                                {% for j in i.partypolicy_set.all %}
+                                    <div onclick="open_detail()" class="policy_item">
+                                        {{j.flexible_title}}
+                                        <div class="policy_detail policy_detail{{j.number}}">
+                                            <b>{{j.title}}</b>- ({{j.category}})<br><br>
+                                            {{j.desc|linebreaks}}
+
+                                           
+                                        </div>
+                                    </div>
+                                {%endfor%}
+                            {%else%}
+                                <span>제출한 정당정책이 없습니다.</span>
+                            {%endif%}
+                    </div>
                     {%endfor%}
                 </article>
 
 
-                <div class="divider_line"> VS </div>
+                <div class="divider_line"> VS <span>공약을 클릭하면 자세히 볼수있어요!</span> </div>
 
                 <article class="bottom">
                     {%for i in bottom %}
                         <input onchange="hide()" type="radio" name="party{{forloop.counter}}" value={{i}} id="party_b_{{forloop.counter}}">
-                        <label for="party_b_{{forloop.counter}}" class="card card{{forloop.counter}}" >{{forloop.counter}}{{i}}</label>
 
+                        <div class="card card{{forloop.counter}}">
+
+                            <label for="party_b_{{forloop.counter}}" > 
+                                    <img src=" {% static 'image/election_icon.png' %}" alt="선택하기">
+                                    선 택
+                            </label>
+
+                                {%if i.partypolicy_set.all|length > 0 %}
+                                    {% for j in i.partypolicy_set.all %}
+                                    <div class="policy_item">
+                                        {{j.flexible_title}}</div>
+                                    {%endfor%}
+                                {%else%}
+                                    <span>제출한 정당정책이 없습니다.</span>
+                                {%endif%}
+                            
+                        </div>
                     {%endfor%}
 
                 </article>
 
 
 
-                <button type="submit">제출</button>
 
 
             </form>
             {%endif%}
         </section>
-        <div>
-            TOP:
-            {%for i in top %}
-                {{i}}
-            
-            {%endfor%}
-        </div>
-        <div>
-            BOTTOM:
-            {%for i in bottom %}
-            {{i}}
-        
-            {%endfor%}
-        </div>
+ 
     </div>
 </body>
 <script>
    
     function hide(){
+
         cho_list = document.querySelectorAll('.' + this.event.target.nextSibling.nextSibling.classList[1])
         
         //min width줄여서 애니메이션 효과 들어가도록 제작
@@ -100,8 +129,7 @@
         cho_list[0].innerHTML = ""
         cho_list[1].innerHTML = ""
 
-
-        if  (this.event.target.innerHTML === document.querySelector('.top label:last-child').innerHTML){
+        if  (this.event.target.name.substr(5) === document.querySelector('.top > div:last-child').classList[1].substr(4)){
             document.querySelector('.choice_container > form').submit()
         }
 
@@ -110,6 +138,15 @@
                 this.event.target.classList.add('close_door')
                 this.event.target.innerHTML = ""
     }
-    
+    function mark_show(){
+        this.event.target.parentNode.firstChild.nextSibling.classList.add('hide')
+    }
+
+    function open_detail(){
+
+        
+    }
+
+
 </script>
 </html>
