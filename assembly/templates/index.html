@@ -22,8 +22,12 @@
         </p>
         <div class="dropdown">
             <form method="GET">
-                <input class="dropbtn" id="sidoselect" value="시/도 선택"></input>
-                    <div class="dropdown-content" onchange="getValue()">
+                {% if temp_cities is None %}
+                <input type="button" class="dropbtn" id="sidoselect" value="시/도 선택">
+                {% else %}
+                <input type="button" class="dropbtn" id="sidoselect" value="{{temp_cities}}">
+                {% endif %}
+                    <div class="dropdown-content">
                         {% for i in cities.all %}
                             <button type="submit" id="sido" value={{i.name}} name="cities">{{i.name}}</button>
                         {% endfor %}
