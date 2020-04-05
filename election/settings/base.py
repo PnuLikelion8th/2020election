@@ -43,8 +43,6 @@ INSTALLED_APPS = [
     'get_data',
     #이거는 뭔지 모르겠네
     'assembly.apps.AssemblyConfig',
-    #이거는 맵
-    'map.apps.MapConfig',
     #정당비교 앱
     'choiceparty',
 ]
