@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'index.css' %}">
-    <script type="text/javascript" src="{% static 'index.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+    <script type="text/javascript" src="{% static 'js/index.js' %}"></script>
 </head>
 <body>
     <section class="mainpage">
@@ -20,18 +20,19 @@
         <p class="title-comment">
             내 생각과 우리 지역구 후보자의 공약은 얼마나 비슷할까요?
         </p>
-        <div class="dropdown" id="sidoselect">
-            <form method="GET" id="sidosubmit">
-                <!-- <div class="dropdown-content">
+        <div class="dropdown">
+            <form method="GET">
+                <input class="dropbtn" id="sidoselect" value="시/도 선택"></input>
+                    <div class="dropdown-content" onchange="getValue()">
+                        {% for i in cities.all %}
+                            <button type="submit" id="sido" value={{i.name}} name="cities">{{i.name}}</button>
+                        {% endfor %}
+                    </div>
+                <!-- <select id="sido" onchange="getValue()" class="dropbtn">
                     {% for i in cities.all %}
-                        <button type="submit" value={{i.id}} name="cities">{{i.name}}</button>
+                        <option type="submit" name="cities" value={{i.name}} class="dropdown-content">{{i.name}}</option>
                     {% endfor %}
-                </div> -->
-                <select id="sido" onchange="getValue()" class="dropbtn">
-                    {% for i in cities.all %}
-                        <option type="submit" name="cities" value={{i.id}} class="dropdown-content">{{i.name}}</option>
-                    {% endfor %}
-                </select>
+                </select> -->
             </form>
         </div>
         <br>
