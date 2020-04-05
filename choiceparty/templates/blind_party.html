@@ -42,12 +42,16 @@
                 <input type="hidden" name="unearned" value={{unearned}}>
                 
                 <article class="top">
-                    {%for i in top %}
+                    {%for i in top %}   
                         <input onchange="hide()" type="radio" name="party{{forloop.counter}}" value={{i}} id="party_t_{{forloop.counter}}">
                         <label for="party_t_{{forloop.counter}}" class="card card{{forloop.counter}}">{{forloop.counter}}
-                            {% for j in i.partypolicy_set.all %}
-                                {{j.title}}<br>
-                            {%endfor%}
+                            {%if i.partypolicy_set.all|length > 0 %}
+                                {% for j in i.partypolicy_set.all %}
+                                    <div class="policy_item">{{j.title}}</div>
+                                {%endfor%}
+                            {%else%}
+                                제출한 정당정책이 없습니다.
+                            {%endif%}
                         </label>
                     {%endfor%}
                 </article>
@@ -58,7 +62,17 @@
                 <article class="bottom">
                     {%for i in bottom %}
                         <input onchange="hide()" type="radio" name="party{{forloop.counter}}" value={{i}} id="party_b_{{forloop.counter}}">
-                        <label for="party_b_{{forloop.counter}}" class="card card{{forloop.counter}}" >{{forloop.counter}}{{i}}</label>
+                        <label for="party_b_{{forloop.counter}}" class="card card{{forloop.counter}}" >{{forloop.counter}}
+                            
+
+                            {%if i.partypolicy_set.all|length > 0 %}
+                                {% for j in i.partypolicy_set.all %}
+                                <div class="policy_item">{{j.title}}</div>
+                                {%endfor%}
+                            {%else%}
+                                제출한 정당정책이 없습니다.
+                            {%endif%}
+                        </label>
 
                     {%endfor%}
 
@@ -66,7 +80,6 @@
 
 
 
-                <button type="submit">제출</button>
 
 
             </form>

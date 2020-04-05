@@ -16,7 +16,6 @@
 
 .top,.bottom{
     height:240px;
-    border:2px solid green;
     display: flex;
     overflow: hidden;
 }
@@ -28,7 +27,6 @@
 .card{
     display: inline-block;
     height:240px;
-    border:1px solid green;
     width:320px;
     min-width: 320px;
     transition: all 0.3s ease-out;
@@ -61,3 +59,8 @@
     display: none;
 }
 
+
+
+.policy_item{
+    font-size:0.8rem;
+}
