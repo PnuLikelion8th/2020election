@@ -37,25 +37,18 @@
         <br>
         <br>
         <div class="dropdown">
-            
-            {% if temp_cities is not None %}
-
-                {% if temp_gungus is None %}
-                    <button class="dropbtn">
-                        지역구 선택
-                {% else %}
-                    <button class="dropbtn">
-                        {{temp_gungus}}1
-                {% endif %}
-                    </button>
-            {% endif %}
-
             <form method="GET">
-
+                <button class="dropbtn">
+                    {% if temp_gungus is None %}
+                    지역구 선택
+                    {% else %}
+                    {{temp_gungus}}
+                    {% endif %}
+                </button>
                 <div class="dropdown-content">
-                    <input type="hidden" name="bf_cities" value={{temp_cities}}>
+                    <input type="hidden" name="">
                     {% for j in gungus %}
-                    <button type="submit" value={{j.sgg_name}} name="gungus">{{j.sgg_name}}</button>
+                    <button type="submit" value={{j.sgg_name}} name="cities">{{j.sgg_name}}</button>
                     {% endfor %}
                 </div>
             </form>
