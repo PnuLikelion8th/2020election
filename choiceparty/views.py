@@ -15,6 +15,7 @@ def blind_party(request):
     if request.method == 'POST':
         #넘어오는 쿼리를 dict으로 해서 muttable하게 해준다.
         tmp_dict = dict(request.POST)
+        print(request.POST, "=========쿼리==============")
 
         # 토큰 제거
         del tmp_dict['csrfmiddlewaretoken']
@@ -26,13 +27,22 @@ def blind_party(request):
 
 
         len_tmp_party = len(tmp_list)
+        print(len_tmp_party,"=========길이==============")
+        #마지막에 1개 남았을때는 우리가 끝났다는것을 알려줘야함
+        if len_tmp_party == 1:
+            print("끝났습니다")
+            context = {'all_party': tmp_list}
+            #이정도로만 보내고 나머지는 template에서 lenth체크를 해줘서 if문 걸꺼임
+            return render(request, 'blind_party.html', context)
+
 
         divider_num = len_tmp_party//2
 
     
         if len_tmp_party % 2 == 1:
-            msg = "누군가 부전승으로 올라갔습니다."
+            
             unearned = tmp_list[len_tmp_party-1]
+            msg = str(unearned) + " 부전승으로 올라갔습니다."
 
             top = tmp_list[0:divider_num]
             bottom = tmp_list[divider_num:len_tmp_party-1]
@@ -57,8 +67,9 @@ def blind_party(request):
         divider_num = len_party//2
 
         if len_party % 2 == 1:
-            msg = "누군가 부전승으로 올라갔습니다."
             unearned = all_party[len_party-1]
+            msg = str(unearned) + " 부전승으로 올라갔습니다."
+
             
             top = all_party[0:divider_num]
             bottom = all_party[divider_num:len_party-1]
