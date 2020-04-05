@@ -38,6 +38,7 @@
         <br>
         <div class="dropdown">
             <form method="GET">
+                {% if temp_cities is not None %}
                 <button class="dropbtn">
                     {% if temp_gungus is None %}
                     지역구 선택
@@ -45,10 +46,11 @@
                     {{temp_gungus}}
                     {% endif %}
                 </button>
+                {% endif %}
                 <div class="dropdown-content">
-                    <input type="hidden" name="">
+                    <input type="hidden" name="bf_cities" value="{{temp_cities}}">
                     {% for j in gungus %}
-                    <button type="submit" value={{j.sgg_name}} name="cities">{{j.sgg_name}}</button>
+                    <button type="submit" value={{j.sgg_name}} name="gungus">{{j.sgg_name}}</button>
                     {% endfor %}
                 </div>
             </form>
