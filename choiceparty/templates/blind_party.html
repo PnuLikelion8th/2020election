@@ -10,15 +10,25 @@
 </head>
 <body> 
     <div class="party_container">
-        {%if msg != None %}
-        {{msg}}
-        {% endif %}
+        
         <h1>나는..
          
         </h1>
 
         <section class="choice_container">
-
+            {%if msg != None %}
+            <div onclick="hide_door()" class="party_choice_door">
+                어떤 정당이 부전승으로 올라갔습니다.
+            </div>
+            {% endif %}
+            <div onclick="hide_door()" class="party_choice_door">
+                {% if len_party == 2%}
+                    결승전 시작하기
+                {%else%}
+                    {{len_party}}강 시작하기
+                {%endif%}
+            </div>
+           
             {%if all_party.all|length == 1 %}
 
             끝!!!
@@ -28,14 +38,17 @@
             {%else%}
             <form method = "POST">
                 {%csrf_token%}
-
+               
                 <input type="hidden" name="unearned" value={{unearned}}>
                 
                 <article class="top">
                     {%for i in top %}
                         <input onchange="hide()" type="radio" name="party{{forloop.counter}}" value={{i}} id="party_t_{{forloop.counter}}">
-                        <label for="party_t_{{forloop.counter}}" class="card card{{forloop.counter}}">{{forloop.counter}}{{i}}</label>
-                        
+                        <label for="party_t_{{forloop.counter}}" class="card card{{forloop.counter}}">{{forloop.counter}}
+                            {% for j in i.partypolicy_set.all %}
+                                {{j.title}}<br>
+                            {%endfor%}
+                        </label>
                     {%endfor%}
                 </article>
 
@@ -93,7 +106,10 @@
         }
 
     }
-
+    function hide_door(){
+                this.event.target.classList.add('close_door')
+                this.event.target.innerHTML = ""
+    }
     
 </script>
 </html>
