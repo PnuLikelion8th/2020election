@@ -11,11 +11,12 @@ def index(request):
     candidates = Candidate.objects
     parties = Party.objects
     partypolicies = PartyPolicy.objects
-    try:
-        if request.GET['cities']:
-            gungus=Gungu.objects.filter(sd_name_id=request.GET['cities'])
-    except:
-        print("pass")
-        pass
-    return render(request, 'index.html', 
-    {'cities' : cities, 'gungus' :gungus, 'candidates':candidates, 'parties':parties, 'partypolicies':partypolicies})
+    # try:
+    if request.GET.get('cities'):
+        # gungus=Gungu.objects.filter(sd_name_id=request.GET['cities'])
+        gungus=Gungu.objects.filter(sd_name = City.objects.get(name=request.GET['cities']))
+    # except:
+    #     print("pass")
+    #     pass
+    context = {'cities' : cities, 'gungus' :gungus, 'candidates':candidates, 'parties':parties, 'partypolicies':partypolicies}
+    return render(request, 'index.html', context)
