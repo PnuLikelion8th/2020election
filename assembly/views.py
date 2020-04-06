@@ -7,19 +7,27 @@ from urllib.parse import urlencode,quote_plus
 # Create your views here.
 def index(request):
     cities = City.objects
-    gungus = ""
+    gungus = None
     candidates = Candidate.objects
     parties = Party.objects
     partypolicies = PartyPolicy.objects
-    temp_cities = None
+    
 
-    # try:
-    if request.GET.get('cities'):
-        # gungus=Gungu.objects.filter(sd_name_id=request.GET['cities'])
+    if request.GET.get('gungus'):
+        gungus=Gungu.objects.filter(sd_name = City.objects.get(name=request.GET['bf_cities']))
+        temp_cities = request.GET.get('bf_cities')
+        temp_gungus = request.GET.get('gungus')
+        context = {'cities' : cities, 'temp_cities':temp_cities, 'gungus' :gungus,'temp_gungus':temp_gungus, 'candidates':candidates, 'parties':parties, 'partypolicies':partypolicies}
+        return render(request, 'index.html', context)
+
+
+    elif request.GET.get('cities'):
         gungus=Gungu.objects.filter(sd_name = City.objects.get(name=request.GET['cities']))
         temp_cities = request.GET.get('cities')
-    # except:
-    #     print("pass")
-    #     pass
+        context = {'cities' : cities, 'temp_cities':temp_cities, 'gungus' :gungus, 'candidates':candidates, 'parties':parties, 'partypolicies':partypolicies}
+        return render(request, 'index.html', context)
+
+    temp_cities = None
+    temp_gungus = None
     context = {'cities' : cities, 'temp_cities':temp_cities, 'gungus' :gungus, 'candidates':candidates, 'parties':parties, 'partypolicies':partypolicies}
     return render(request, 'index.html', context)

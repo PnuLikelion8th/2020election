@@ -32,22 +32,28 @@
                             <button type="submit" id="sido" value={{i.name}} name="cities">{{i.name}}</button>
                         {% endfor %}
                     </div>
-                <!-- <select id="sido" onchange="getValue()" class="dropbtn">
-                    {% for i in cities.all %}
-                        <option type="submit" name="cities" value={{i.name}} class="dropdown-content">{{i.name}}</option>
-                    {% endfor %}
-                </select> -->
             </form>
         </div>
         <br>
         <br>
         <div class="dropdown">
-            <button class="dropbtn">지역구 선택</button>
-            <div class="dropdown-content">
-                {% for j in gungus %}
-                <a href="#">{{j.sgg_name}}</a>
-                {% endfor %}
-            </div>
+            <form method="GET">
+                {% if temp_cities is not None %}
+                <button class="dropbtn">
+                    {% if temp_gungus is None %}
+                    지역구 선택
+                    {% else %}
+                    {{temp_gungus}}
+                    {% endif %}
+                </button>
+                {% endif %}
+                <div class="dropdown-content">
+                    <input type="hidden" name="bf_cities" value="{{temp_cities}}">
+                    {% for j in gungus %}
+                    <button type="submit" value={{j.sgg_name}} name="gungus">{{j.sgg_name}}</button>
+                    {% endfor %}
+                </div>
+            </form>
         </div>
     </section>
     <br>
