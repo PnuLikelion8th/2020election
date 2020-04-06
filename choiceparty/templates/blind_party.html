@@ -38,10 +38,12 @@
                         {{j.flexible_title}}
                     
                     </div>
-                    
+                    <div onclick="close_detail()" class="policy_detail_close">
+                        <img src="{% static 'image/close_icon.png' %}">
+                    </div>
                     <div class="policy_detail policy_detail{{j.number}}">
                         <div>
-                            <div onclick="close_detail()" class="policy_detail_close">닫기</div>
+                            
                             <strong>{{j.title}}</strong>- ({{j.category}})<br>
                             {{j.desc|linebreaks}}
                     
@@ -102,13 +104,17 @@
                                         
                                     </div>
 
+                                    <div onclick="close_detail()" class="policy_detail_close">
+                                        <img src="{% static 'image/close_icon.png' %}">
+                                    </div>
+
                                     <div class="policy_detail policy_detail{{j.number}}">
                                         <div>
-                                            <div onclick="close_detail()" class="policy_detail_close">닫기</div>
                                             <strong>{{j.title}}</strong>- ({{j.category}})<br>
                                             {{j.desc|linebreaks}}
-                                        
+                                            
                                         </div>
+                                        <div class="scroll_display"></div>
                                     </div>
                                 {%endfor%}
                             {%else%}
@@ -139,10 +145,11 @@
                                             {{j.flexible_title}}
                                         
                                         </div>
-
+                                        <div onclick="close_detail()" class="policy_detail_close">
+                                            <img src="{% static 'image/close_icon.png' %}">
+                                        </div>
                                         <div class="policy_detail policy_detail{{j.number}}">
                                             <div>
-                                                <div onclick="close_detail()" class="policy_detail_close">닫기</div>
                                                     <strong>{{j.title}}</strong>- ({{j.category}})<br>
                                                     {{j.desc|linebreaks}}
 
@@ -173,7 +180,7 @@
         let that = this.event.target
         this.event.target.nextSibling.nextSibling.firstChild.nextSibling.classList.add('mark_show')
         
-        setTimeout(hide.bind(null,that), 300)
+        setTimeout(hide.bind(null,that), 200)
     }
 
     function hide(that) {
@@ -203,11 +210,22 @@
     }
 
     function open_detail(){
+        this.event.target.nextSibling.nextSibling.nextSibling.nextSibling.classList.add('show')
         this.event.target.nextSibling.nextSibling.classList.add('show')
+
+        //console.log(this.event.target.nextSibling.nextSibling.nextSibling.nextSibling)
+        //스크롤이 있으면 아래 스크롤하라는 표시 띄워주려했었음.
+   //     let detail_window = this.event.target.nextSibling.nextSibling.nextSibling.offsetHeight
+     //   let detail_content_height = this.event.target.nextSibling.nextSibling.nextSibling.firstChild.nextSibling.offsetHeight
+       // console.log(this.event.target.nextSibling.nextSibling.offsetHeight < this.event.target.nextSibling.nextSibling.firstChild.offsetHeight)
         
     }
     function close_detail(){
-        this.event.target.parentNode.parentNode.classList.remove('show')
+
+        console.log(this.event.target.parentNode)
+        this.event.target.parentNode.nextSibling.nextSibling.classList.remove('show')
+        this.event.target.parentNode.classList.remove('show')
+
     }
 </script>
 </html>

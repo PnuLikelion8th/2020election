@@ -78,6 +78,7 @@ body{
     font-size:0.7rem;
     color:#777;
     align-items: center;
+    font-weight: 800;
 }
 .card > label > img{
     height:50px;
@@ -92,7 +93,7 @@ body{
     display: flex;
     height:100%;
     width:100%;
-    transition: all 0.3s ease-out;
+    transition: all 0.2s ease-out;
     cursor: pointer;
     position: absolute;
     background: white;
@@ -113,7 +114,7 @@ body{
 .zero_width{
     min-width: 0;
     padding:0;
-    transition: all 0.3s ease-out;
+    transition: all 0.2s ease-out;
 }
 .close_door{
     height:0;
@@ -160,28 +161,30 @@ body{
     padding-top:30px;
     border-radius: 5px;
     box-sizing: border-box;
-        transition: all 0.1s ease-out;
+    transition: all 0.1s ease-out;
 
 }
 .policy_detail > div {
-    width:100%;
-    height:100%;
     position: relative;
 }
 .policy_detail_close{
     position: absolute;
-    right:-5px;
-    top:-25px;
-    color: #777;
-    font-weight: 800;
-    font-size:0.8rem;
+    right:5%;
+    top:5%;
+    margin-right:10px;
+    margin-top:10px;
     /* background-color: #777; */
-    border: 2px solid #ccc;
-    padding:0px 5px;
-    border-radius: 10px;
     cursor: pointer;
+    display: none;
+    z-index:1;
+    background-color: white;
+    width:auto;
+    height:auto;
+    border-radius: 10px;
 }
-
+.policy_detail_close > img{
+    width:20px;
+}
 .choice_mark{
     position: absolute;
     height:80%;
@@ -216,6 +219,10 @@ body{
 .review_party{
     margin-top:50px;
 color: #444;
+display: flex;
+flex-wrap:wrap ;
+justify-content: center;
+align-items:center;
 
 }
 .review_party > span {
