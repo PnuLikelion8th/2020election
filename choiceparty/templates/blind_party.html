@@ -9,7 +9,9 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/blind_party.css' %}">
 </head>
 <body> 
-    <a class="home_fix_link" href="{% url 'index' %}">홈</a>
+    <a class="home_fix_link" href="{% url 'index' %}">
+        메인으로
+    </a>
     <div class="party_container">
         
     
@@ -27,7 +29,7 @@
                 입니다
                 <div class="review_party">
                 {%for i in all_party%}
-                    {{i}}공약 다시 보기
+                    <span>{{i}}공약 다시 보기</span>
                     
 
                     {%if i.partypolicy_set.all|length > 0 %}
@@ -83,9 +85,10 @@
 
                     {%for i in top %}
 
-                    <input onchange="hide()" type="radio" name="party{{forloop.counter}}" value={{i}} id="party_t_{{forloop.counter}}">
+                    <input onchange="marking()" type="radio" name="party{{forloop.counter}}" value={{i}} id="party_t_{{forloop.counter}}">
 
                     <div class="card card{{forloop.counter}}">   
+                        <img class="choice_mark" src="{% static 'image/election_icon.png' %}" alt="선택하기">
 
                         <label for="party_t_{{forloop.counter}}"">
                             <img src="{% static 'image/election_icon.png' %}" alt="선택하기">
@@ -120,9 +123,10 @@
 
                 <article class="bottom">
                     {%for i in bottom %}
-                        <input onchange="hide()" type="radio" name="party{{forloop.counter}}" value={{i}} id="party_b_{{forloop.counter}}">
+                        <input onchange="marking()" type="radio" name="party{{forloop.counter}}" value={{i}} id="party_b_{{forloop.counter}}">
 
                         <div class="card card{{forloop.counter}}">
+                            <img class="choice_mark"src="{% static 'image/election_icon.png' %}" alt="선택하기">
 
                             <label for="party_b_{{forloop.counter}}" > 
                                     <img src=" {% static 'image/election_icon.png' %}" alt="선택하기">
@@ -165,23 +169,31 @@
     </div>
 </body>
 <script>
-   
-    function hide(){
-
-        cho_list = document.querySelectorAll('.' + this.event.target.nextSibling.nextSibling.classList[1])
+    function marking(){
+        let that = this.event.target
+        this.event.target.nextSibling.nextSibling.firstChild.nextSibling.classList.add('mark_show')
         
-        //min width줄여서 애니메이션 효과 들어가도록 제작
-        cho_list[0].classList.add('zero_width')
-        cho_list[1].classList.add('zero_width')
-        //클릭하면 해당 div 내 text제거되게함
-        cho_list[0].innerHTML = ""
-        cho_list[1].innerHTML = ""
-
-        if  (this.event.target.name.substr(5) === document.querySelector('.top > div:last-child').classList[1].substr(4)){
-            document.querySelector('.choice_container > form').submit()
-        }
-
+        setTimeout(hide.bind(null,that), 300)
     }
+
+    function hide(that) {
+
+        cho_list = document.querySelectorAll('.' + that.nextSibling.nextSibling.classList[1])
+
+            //min width줄여서 애니메이션 효과 들어가도록 제작
+            cho_list[0].classList.add('zero_width')
+            cho_list[1].classList.add('zero_width')
+            //클릭하면 해당 div 내 text제거되게함
+            cho_list[0].innerHTML = ""
+            cho_list[1].innerHTML = ""
+
+            if (that.name.substr(5) === document.querySelector('.top > div:last-child').classList[1].substr(4)) {
+                document.querySelector('.choice_container > form').submit()
+            }
+
+
+        }
+   
     function hide_door(){
                 this.event.target.classList.add('close_door')
                 this.event.target.innerHTML = ""
