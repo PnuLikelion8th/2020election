@@ -50,7 +50,7 @@
                 <div class="dropdown-content">
                     <input type="hidden" name="bf_cities" value="{{temp_cities}}">
                     {% for j in gungus %}
-                    <button type="submit" value={{j.sgg_name}} name="gungus">{{j.sgg_name}}</button>
+                    <button type="submit" name="gungus" value={{j.sgg_name}}>{{j.sgg_name}}</button>
                     {% endfor %}
                 </div>
             </form>
@@ -58,6 +58,7 @@
     </section>
     <br>
     <br>
+    {% if temp_gungus is not None %}
     <section class="who">
         <h2>나와의 공약 궁합을 확인하고 싶은
             <br>
@@ -66,11 +67,13 @@
         <div class="whoWrap">
             <ul>
                 <li>
+                    {% for i in candidates.all %}
                     <div class="image-cropper">
                         <img src="{% static 'cha.jpg' %}">
                     </div>
-                    <p class="candidatename">김뫄뫄</p>
-                    <p class="partyname">마당</p>
+                    <p class="candidatename">{{i.name}}</p>
+                    <p class="partyname">{{i.jdname}}</p>
+                    {% endfor %}
                 </li>
                 <li>
                     <div class="image-cropper">
@@ -110,6 +113,7 @@
             </ul>
         </div>
     </section>
+    {% endif %}
     <section>
         <h2>몇 개의 질문에 대한
             <br>
