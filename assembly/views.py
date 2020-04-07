@@ -4,7 +4,7 @@ import urllib.request
 from urllib.parse import urlencode,quote_plus
 
 
-# Create your views here.
+
 def index(request):
     cities = City.objects
     gungus = None
@@ -17,7 +17,12 @@ def index(request):
         gungus=Gungu.objects.filter(sd_name = City.objects.get(name=request.GET['bf_cities']))
         temp_cities = request.GET.get('bf_cities')
         temp_gungus = request.GET.get('gungus')
-        context = {'cities' : cities, 'temp_cities':temp_cities, 'gungus' :gungus,'temp_gungus':temp_gungus, 'candidates':candidates, 'parties':parties, 'partypolicies':partypolicies}
+        try:
+            target_candidates = candidates.filter(sggname=Gungu.objects.get(name=temp_gungus))
+        except:
+            target_candidates = None
+        # print([qs if qs.Exist else 'None' for qs in candidates.filter(sggname=Gungu.objects.get(name=temp_gungus))])
+        context = {'cities' : cities, 'temp_cities':temp_cities, 'gungus' :gungus,'temp_gungus':temp_gungus, 'candidates':candidates,'target_candidates':target_candidates, 'parties':parties, 'partypolicies':partypolicies}
         return render(request, 'index.html', context)
 
 
