@@ -77,10 +77,11 @@
                     {%for i in target_candidates%}
                     <li>
                         <div class="image-cropper">
-                            <img src="{% static 'cha.jpg' %}">
+                            <!-- <img src="{% static 'cha.jpg' %}"> -->
+                            <img src="http://cpmadang.org/sites/default/files/{{i.candi_id}}.JPG">
                         </div>
                         <p class="candidatename">{{i.name}}</p>
-                        <p class="partyname">마당</p>
+                        <p class="partyname">{{i.jdname}}</p>
                     </li>
                     {% endfor %}
                 {% endif %}
