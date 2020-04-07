@@ -4,11 +4,11 @@ import urllib.request
 from urllib.parse import urlencode,quote_plus
 
 
-# Create your views here.
+
 def index(request):
     cities = City.objects
     gungus = None
-    candidates = None
+    candidates = Candidate.objects
     parties = Party.objects
     partypolicies = PartyPolicy.objects
     
@@ -18,14 +18,19 @@ def index(request):
         # .get(name=request.GET['gungus']))
         temp_cities = request.GET.get('bf_cities')
         temp_gungus = request.GET.get('gungus')
+        # # candidates = Candidate.objects.filter(sggname = Gungu.objects.get(name=request.GET['gungus']).sgg_name)
         # candidates = Candidate.objects.filter(sggname = Gungu.objects.get(name=request.GET['gungus']).sgg_name)
-        candidates = Candidate.objects.filter(sggname = Gungu.objects.get(name=request.GET['gungus']).sgg_name)
-        context = {'cities' : cities, 'temp_cities':temp_cities, 'gungus' :gungus,'temp_gungus':temp_gungus, 'candidates':candidates, 'parties':parties, 'partypolicies':partypolicies}
+        # context = {'cities' : cities, 'temp_cities':temp_cities, 'gungus' :gungus,'temp_gungus':temp_gungus, 'candidates':candidates, 'parties':parties, 'partypolicies':partypolicies}
+        try:
+            target_candidates = candidates.filter(sggname=Gungu.objects.get(name=temp_gungus))
+        except:
+            target_candidates = None
+        # print([qs if qs.Exist else 'None' for qs in candidates.filter(sggname=Gungu.objects.get(name=temp_gungus))])
+        context = {'cities' : cities, 'temp_cities':temp_cities, 'gungus' :gungus,'temp_gungus':temp_gungus, 'candidates':candidates,'target_candidates':target_candidates, 'parties':parties, 'partypolicies':partypolicies}
         return render(request, 'index.html', context)
-        pass
+
 
     elif request.GET.get('cities'):
-        print("시티즈들어온다~")
         gungus=Gungu.objects.filter(sd_name = City.objects.get(name=request.GET['cities']))
         temp_cities = request.GET.get('cities')
         context = {'cities' : cities, 'temp_cities':temp_cities, 'gungus' :gungus, 'candidates':candidates, 'parties':parties, 'partypolicies':partypolicies}

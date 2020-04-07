@@ -66,16 +66,36 @@
         </h2>
         <div class="whoWrap">
             <ul>
-                <li>
-                    {% for i in candidates.all %}
+                <!-- <li> -->
+                    <!-- {% for i in candidates.all %}
                     <div class="image-cropper">
                         <img src="{% static 'cha.jpg' %}">
                     </div>
                     <p class="candidatename">{{i.name}}</p>
                     <p class="partyname">{{i.jdname}}</p>
                     {% endfor %}
-                </li>
+                </li> -->
                 <li>
+                {% if not target_candidates and temp_gungus %}  
+                   논논
+                   매칭되는 친구가 없어요!
+                   
+                {% elif not target_candidates %}
+                    ~언능골라~
+
+                {% else %}
+
+                    {%for i in target_candidates%}
+                    <li>
+                        <div class="image-cropper">
+                            <img src="{% static 'cha.jpg' %}">
+                        </div>
+                        <p class="candidatename">{{i.name}}</p>
+                        <p class="partyname">마당</p>
+                    </li>
+                    {% endfor %}
+                {% endif %}
+                <!-- <li>
                     <div class="image-cropper">
                         <img src="{% static 'cha.jpg' %}">
                     </div>
@@ -109,7 +129,7 @@
                     </div>
                     <p class="candidatename">최솨솨</p>
                     <p class="partyname">멋사당</p>
-                </li>
+                </li> -->
             </ul>
         </div>
     </section>

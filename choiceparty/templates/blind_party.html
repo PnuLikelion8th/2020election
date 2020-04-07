@@ -9,6 +9,9 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/blind_party.css' %}">
 </head>
 <body> 
+    <a class="home_fix_link" href="{% url 'index' %}">
+        메인으로
+    </a>
     <div class="party_container">
         
     
@@ -17,11 +20,45 @@
             
            
             {%if all_party.all|length == 1 %}
+            <div class="result_party">
 
-                끝!!!
+            당신의 선택은<br>       
                 {%for i in all_party%}
-                    {{i}}
+                    <span>{{i}}</span>
                 {%endfor%}
+                입니다
+                <div class="review_party">
+                {%for i in all_party%}
+                    <span>{{i}}공약 다시 보기</span>
+                    
+
+                    {%if i.partypolicy_set.all|length > 0 %}
+                    {% for j in i.partypolicy_set.all %}
+                    <div onclick="open_detail()" class="policy_item">
+                        {{j.flexible_title}}
+                    
+                    </div>
+                    <div onclick="close_detail()" class="policy_detail_close">
+                        <img src="{% static 'image/close_icon.png' %}">
+                    </div>
+                    <div class="policy_detail policy_detail{{j.number}}">
+                        <div>
+                            
+                            <strong>{{j.title}}</strong>- ({{j.category}})<br>
+                            {{j.desc|linebreaks}}
+                    
+                        </div>
+                    </div>
+                    {%endfor%}
+                    {%else%}
+                    <span>제출한 정당정책이 없습니다.</span>
+                    {%endif%}
+
+
+
+                {%endfor%}
+                </div>
+            </div>
             {%else%}
 
             {%if msg != None %}
@@ -50,9 +87,10 @@
 
                     {%for i in top %}
 
-                    <input onchange="hide()" type="radio" name="party{{forloop.counter}}" value={{i}} id="party_t_{{forloop.counter}}">
+                    <input onchange="marking()" type="radio" name="party{{forloop.counter}}" value={{i}} id="party_t_{{forloop.counter}}">
 
                     <div class="card card{{forloop.counter}}">   
+                        <img class="choice_mark" src="{% static 'image/election_icon.png' %}" alt="선택하기">
 
                         <label for="party_t_{{forloop.counter}}"">
                             <img src="{% static 'image/election_icon.png' %}" alt="선택하기">
@@ -63,12 +101,20 @@
                                 {% for j in i.partypolicy_set.all %}
                                     <div onclick="open_detail()" class="policy_item">
                                         {{j.flexible_title}}
-                                        <div class="policy_detail policy_detail{{j.number}}">
-                                            <b>{{j.title}}</b>- ({{j.category}})<br><br>
-                                            {{j.desc|linebreaks}}
+                                        
+                                    </div>
 
-                                           
+                                    <div onclick="close_detail()" class="policy_detail_close">
+                                        <img src="{% static 'image/close_icon.png' %}">
+                                    </div>
+
+                                    <div class="policy_detail policy_detail{{j.number}}">
+                                        <div>
+                                            <strong>{{j.title}}</strong>- ({{j.category}})<br>
+                                            {{j.desc|linebreaks}}
+                                            
                                         </div>
+                                        <div class="scroll_display"></div>
                                     </div>
                                 {%endfor%}
                             {%else%}
@@ -83,9 +129,10 @@
 
                 <article class="bottom">
                     {%for i in bottom %}
-                        <input onchange="hide()" type="radio" name="party{{forloop.counter}}" value={{i}} id="party_b_{{forloop.counter}}">
+                        <input onchange="marking()" type="radio" name="party{{forloop.counter}}" value={{i}} id="party_b_{{forloop.counter}}">
 
                         <div class="card card{{forloop.counter}}">
+                            <img class="choice_mark"src="{% static 'image/election_icon.png' %}" alt="선택하기">
 
                             <label for="party_b_{{forloop.counter}}" > 
                                     <img src=" {% static 'image/election_icon.png' %}" alt="선택하기">
@@ -94,8 +141,20 @@
 
                                 {%if i.partypolicy_set.all|length > 0 %}
                                     {% for j in i.partypolicy_set.all %}
-                                    <div class="policy_item">
-                                        {{j.flexible_title}}</div>
+                                        <div onclick="open_detail()" class="policy_item">
+                                            {{j.flexible_title}}
+                                        
+                                        </div>
+                                        <div onclick="close_detail()" class="policy_detail_close">
+                                            <img src="{% static 'image/close_icon.png' %}">
+                                        </div>
+                                        <div class="policy_detail policy_detail{{j.number}}">
+                                            <div>
+                                                    <strong>{{j.title}}</strong>- ({{j.category}})<br>
+                                                    {{j.desc|linebreaks}}
+
+                                            </div>
+                                        </div>
                                     {%endfor%}
                                 {%else%}
                                     <span>제출한 정당정책이 없습니다.</span>
@@ -117,23 +176,31 @@
     </div>
 </body>
 <script>
-   
-    function hide(){
-
-        cho_list = document.querySelectorAll('.' + this.event.target.nextSibling.nextSibling.classList[1])
+    function marking(){
+        let that = this.event.target
+        this.event.target.nextSibling.nextSibling.firstChild.nextSibling.classList.add('mark_show')
         
-        //min width줄여서 애니메이션 효과 들어가도록 제작
-        cho_list[0].classList.add('zero_width')
-        cho_list[1].classList.add('zero_width')
-        //클릭하면 해당 div 내 text제거되게함
-        cho_list[0].innerHTML = ""
-        cho_list[1].innerHTML = ""
-
-        if  (this.event.target.name.substr(5) === document.querySelector('.top > div:last-child').classList[1].substr(4)){
-            document.querySelector('.choice_container > form').submit()
-        }
-
+        setTimeout(hide.bind(null,that), 200)
     }
+
+    function hide(that) {
+
+        cho_list = document.querySelectorAll('.' + that.nextSibling.nextSibling.classList[1])
+
+            //min width줄여서 애니메이션 효과 들어가도록 제작
+            cho_list[0].classList.add('zero_width')
+            cho_list[1].classList.add('zero_width')
+            //클릭하면 해당 div 내 text제거되게함
+            cho_list[0].innerHTML = ""
+            cho_list[1].innerHTML = ""
+
+            if (that.name.substr(5) === document.querySelector('.top > div:last-child').classList[1].substr(4)) {
+                document.querySelector('.choice_container > form').submit()
+            }
+
+
+        }
+   
     function hide_door(){
                 this.event.target.classList.add('close_door')
                 this.event.target.innerHTML = ""
@@ -143,10 +210,22 @@
     }
 
     function open_detail(){
+        this.event.target.nextSibling.nextSibling.nextSibling.nextSibling.classList.add('show')
+        this.event.target.nextSibling.nextSibling.classList.add('show')
 
+        //console.log(this.event.target.nextSibling.nextSibling.nextSibling.nextSibling)
+        //스크롤이 있으면 아래 스크롤하라는 표시 띄워주려했었음.
+   //     let detail_window = this.event.target.nextSibling.nextSibling.nextSibling.offsetHeight
+     //   let detail_content_height = this.event.target.nextSibling.nextSibling.nextSibling.firstChild.nextSibling.offsetHeight
+       // console.log(this.event.target.nextSibling.nextSibling.offsetHeight < this.event.target.nextSibling.nextSibling.firstChild.offsetHeight)
         
     }
+    function close_detail(){
 
+        console.log(this.event.target.parentNode)
+        this.event.target.parentNode.nextSibling.nextSibling.classList.remove('show')
+        this.event.target.parentNode.classList.remove('show')
 
+    }
 </script>
 </html>
