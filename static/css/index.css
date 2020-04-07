@@ -98,7 +98,8 @@ h2 {
 
 ul {
     text-align: center;
-    padding-top: 90px;
+    padding-top: 140px;
+
 }
 
 li {
@@ -183,6 +184,7 @@ li {
     position: relative;
     overflow: hidden;
     border-radius: 50%;
+    margin: 0 auto;
 }
 
 .image-cropper:hover {
@@ -205,3 +207,70 @@ img {
     /* align-items: center; */
     justify-content: space-between;
 }
+.sector_choice>button{
+    text-decoration: none;
+    margin: 0;
+    outline: 0;
+    padding:5px 10px;
+    border: 3px solid black;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.talk_section{
+    position: absolute;
+    /* box-shadow: 0 0px 10px 2px rgba(0,0,0,0.5); */
+    bottom: 197px;
+    width: 200px;
+    border: solid black;
+    border-width: 1.5px;
+    border-radius: 15px;
+    box-sizing: border-box;
+    z-index: 1;
+}
+.talk_section>div{
+    white-space: normal;
+    word-break: break-all;
+
+}
+
+.talk_section_tail{
+    position: absolute;
+    bottom: -14px;
+    left: 100px;
+    width: 0px;
+    height: 0px;
+    border-left: 7px solid transparent;
+    border-top: 14px solid black;
+    border-right: 7px solid transparent;
+
+}
+
+.talk_section_tail_inner{
+    position: absolute;
+    bottom: -10px;
+    left: 101px;
+    /* width: 10px;
+    height: 20px;
+    border: 1px solid black;
+    box-sizing: border-box;
+    border-top: 1px white solid;
+    border-width: 1px;
+    /* /* z-index:  */
+    z-index:2;
+    width: 0px;
+    height: 0px;
+    border-left: 6px solid transparent;
+    border-top: 12px solid white;
+    border-right: 6px solid transparent;
+
+}
+
+
+
+.candidate_section{
+    position: relative;
+    width: 220px;
+}
+
+
+

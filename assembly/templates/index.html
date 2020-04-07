@@ -59,9 +59,9 @@
     <br>
     <br>
     <section class="who">
-        <h2>나와의 공약 궁합을 확인하고 싶은
+        <h2>우리 지역 후보들은
             <br>
-            후보자를 선택해봐요
+            어떤 생각을 가지고 있을까요?
         </h2>
         <div class="whoWrap">
             <ul>
@@ -76,17 +76,34 @@
 
                     {%for i in target_candidates%}
                     <li>
-                        <div class="image-cropper">
-                            <!-- <img src="{% static 'cha.jpg' %}"> -->
-                            <img src="http://cpmadang.org/sites/default/files/{{i.candi_id}}.JPG">
+                        <div class="candidate_section">
+                                
+                            <div class="talk_section">
+                                
+                                <div>
+                                    asdasdsad내용~asdsad내용~asdsad내용~asdsad내용~asdsad내용~asdsad내용~
+
+                                </div>
+
+                                <div class="talk_section_tail"></div>
+                                <div class="talk_section_tail_inner"></div>
+                            
+                            </div>
+
+                            <div class="image-cropper">
+                                <!-- <img src="{% static 'cha.jpg' %}"> -->
+                                <img src="http://cpmadang.org/sites/default/files/{{i.candi_id}}.JPG">
+                            </div>
+                            <p class="candidatename">{{i.name}}</p>
+                            <p class="partyname">{{i.jdname}}</p>
+                            
                         </div>
-                        <p class="candidatename">{{i.name}}</p>
-                        <p class="partyname">{{i.jdname}}</p>
                     </li>
                     {% endfor %}
                 {% endif %}
             </ul>
         </div>
+        
 
         <div class="sector_choice">
             <button>부문1</button>
