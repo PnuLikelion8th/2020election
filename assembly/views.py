@@ -16,9 +16,10 @@ def index(request):
     if request.GET.get('gungus'):
         gungus=Gungu.objects.filter(sd_name = City.objects.get(name=request.GET['bf_cities']))
         temp_cities = request.GET.get('bf_cities')
-        temp_gungus = request.GET.get('gungus')
+        temp_gungus = Gungu.objects.get(id=request.GET.get('gungus'))
+        print(temp_gungus)
         try:
-            target_candidates = candidates.filter(sggname=Gungu.objects.get(name=temp_gungus))
+            target_candidates = candidates.filter(sggname=temp_gungus)
         except:
             target_candidates = None
         # print([qs if qs.Exist else 'None' for qs in candidates.filter(sggname=Gungu.objects.get(name=temp_gungus))])
