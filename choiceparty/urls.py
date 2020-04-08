@@ -19,7 +19,7 @@ from . import views
 
 urlpatterns = [
 
-    path('blind_party/', views.blind_party, name="blind_party"),
+    path('', views.blind_party, name="blind_party"),
 
 
 ]
