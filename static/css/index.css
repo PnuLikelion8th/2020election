@@ -185,6 +185,7 @@ li {
     overflow: hidden;
     border-radius: 50%;
     margin: 0 auto;
+    cursor: pointer;
 }
 
 .image-cropper:hover {
@@ -197,7 +198,34 @@ img {
     height: 100%;
     width: auto;
 }
+.image-info-ani{
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    left:0;
+    background: gray;
+    width: 100px;
+    height: 100px;
+    animation : shadowing 2s infinite ease-in forwards alternate;
+}
+.image-info-ani>div{
+    margin-top: 38px;
+}
+@keyframes shadowing{
+    0%{
+        opacity: 0;
 
+    }
+    50%{
+        opacity: 0.1;
+    }
+    75%{
+        opacity: 0.3;
+    }
+    100%{
+        opacity: 0.8;
+    }
+}
 
 .sector_choice{
     width: 320px;
