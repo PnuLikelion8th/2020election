@@ -50,7 +50,7 @@
                 <div class="dropdown-content">
                     <input type="hidden" name="bf_cities" value="{{temp_cities}}">
                     {% for j in gungus %}
-                    <button type="submit" name="gungus" value={{j.sgg_name}}>{{j.sgg_name}}</button>
+                    <button type="submit" value={{j.id}} name="gungus">{{j.sgg_name}}</button>
                     {% endfor %}
                 </div>
             </form>
@@ -58,11 +58,11 @@
     </section>
     <br>
     <br>
-    {% if temp_gungus is not None %}
+    {% if target_candidates %}
     <section class="who">
-        <h2>나와의 공약 궁합을 확인하고 싶은
+        <h2>우리 지역 후보들은
             <br>
-            후보자를 선택해봐요
+            어떤 생각을 가지고 있을까요?
         </h2>
         <div class="whoWrap">
             <ul>
@@ -87,53 +87,43 @@
 
                     {%for i in target_candidates%}
                     <li>
-                        <div class="image-cropper">
-                            <img src="{% static 'cha.jpg' %}">
+                        <div class="candidate_section">
+                            <div class="talk_section">
+                                <div>
+                                    asdasdsad내용~asdsad내용~asdsad내용~asdsad내용~asdsad내용~asdsad내용~
+                                </div>
+                                <div class="talk_section_tail"></div>
+                                <div class="talk_section_tail_inner"></div>
+                            </div>
+
+                            
+                                <div onclick="candidate_info('{{i.name}}','{{i.job}}');" class="image-cropper">
+                                    <img src="http://cpmadang.org/sites/default/files/{{i.candi_id}}.JPG">
+                                </div>
+                            
+
+                            <p class="candidatename">{{i.name}}</p>
+                            <p class="partyname">{{i.jdname}}</p>
+                            
                         </div>
-                        <p class="candidatename">{{i.name}}</p>
-                        <p class="partyname">마당</p>
                     </li>
                     {% endfor %}
                 {% endif %}
-                <!-- <li>
-                    <div class="image-cropper">
-                        <img src="{% static 'cha.jpg' %}">
-                    </div>
-                    <p class="candidatename">최솨솨</p>
-                    <p class="partyname">멋사당</p>
-                </li>
-                <li>
-                    <div class="image-cropper">
-                        <img src="{% static 'cha.jpg' %}">
-                    </div>
-                    <p class="candidatename">이롸로ㅏ</p>
-                    <p class="partyname">고양이당</p>
-                </li>
-                <li>
-                    <div class="image-cropper">
-                        <img src="{% static 'cha.jpg' %}">
-                    </div>
-                    <p class="candidatename">최솨솨</p>
-                    <p class="partyname">멋사당</p>
-                </li>
-                <li>
-                    <div class="image-cropper">
-                        <img src="{% static 'cha.jpg' %}">
-                    </div>
-                    <p class="candidatename">최솨솨</p>
-                    <p class="partyname">멋사당</p>
-                </li>
-                <li>
-                    <div class="image-cropper">
-                        <img src="{% static 'cha.jpg' %}">
-                    </div>
-                    <p class="candidatename">최솨솨</p>
-                    <p class="partyname">멋사당</p>
-                </li> -->
             </ul>
         </div>
+        
+        {% if temp_gungus and target_candidates %}
+        <div class="sector_choice">
+            <button>부문1</button>
+            <button>부문2</button>
+            <button>부문3</button>
+            <button>부문4</button>
+            <button>부문5</button>
+        </div>
+        {% endif %}
     </section>
     {% endif %}
+    {% comment %}
     <section>
         <h2>몇 개의 질문에 대한
             <br>
@@ -262,37 +252,17 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> 
+    {% endcomment %}
+
+    {% if target_candidates %}
     <section class="resultWrap">
-        <h2>나와 김뫄뫄 후보의 생각은</h2>
-        <div>비슷해요</div>
-        <br>
-        <br>
-        <div>
-            김뫄뫄 후보는 재선 후보에요.
-        </div>
-        <br>
-        <div>
-            온천천 수질개선,어쩌구어저꾸 정책을 공약으로 삼았어요.
-        </div>
-        <br>
-        <div>
-            이 후보의 지난 국회 본회의 출석률은 00%에요.
-        </div>
-        <br>
-        <a onclick="this.nextSibling.nextSibling.style.display=(this.nextSibling.nextSibling.style.display=='none')?'block':'none';" href="javascript:void(0)">
-            김뫄뫄 후보 기본정보 보기
-        </a>
-        <div style="display: none">
-        어쩌구 초등학교 졸업
-        무슨무슨 경력...
-        </div>
-        <br>
-        <br>
-        <br>
-        <br>
-        <div>어때요? 생각한 만큼 비슷한가요?</div>
+        <h2>후보를 선택해서 자세한 정보를 알아보세요!(사진 클릭하면 나옴)</h2>
+        
+        <div id="cd_dt_info"></div>
     </section>
+    {% endif %}
+    {% comment %}
     <section>
         <h2>다른 후보와의
             <br>
@@ -331,5 +301,6 @@
             </ul>
         </div>
     </section>
+    {% endcomment %}
 </body>
 </html>

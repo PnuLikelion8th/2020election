@@ -17,12 +17,10 @@ def index(request):
         gungus=Gungu.objects.filter(sd_name = City.objects.get(name=request.GET['bf_cities']))
         # .get(name=request.GET['gungus']))
         temp_cities = request.GET.get('bf_cities')
-        temp_gungus = request.GET.get('gungus')
-        # # candidates = Candidate.objects.filter(sggname = Gungu.objects.get(name=request.GET['gungus']).sgg_name)
-        # candidates = Candidate.objects.filter(sggname = Gungu.objects.get(name=request.GET['gungus']).sgg_name)
-        # context = {'cities' : cities, 'temp_cities':temp_cities, 'gungus' :gungus,'temp_gungus':temp_gungus, 'candidates':candidates, 'parties':parties, 'partypolicies':partypolicies}
+        temp_gungus = Gungu.objects.get(id=request.GET.get('gungus'))
+        print(temp_gungus)
         try:
-            target_candidates = candidates.filter(sggname=Gungu.objects.get(name=temp_gungus))
+            target_candidates = candidates.filter(sggname=temp_gungus)
         except:
             target_candidates = None
         # print([qs if qs.Exist else 'None' for qs in candidates.filter(sggname=Gungu.objects.get(name=temp_gungus))])
