@@ -218,11 +218,11 @@ body{
 }
 .review_party{
     margin-top:50px;
-color: #444;
-display: flex;
-flex-wrap:wrap ;
-justify-content: center;
-align-items:center;
+    color: #444;
+    display: flex;
+    flex-wrap:wrap ;
+    justify-content: center;
+    align-items:center;
 
 }
 .review_party > span {
