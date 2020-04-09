@@ -23,22 +23,7 @@
         <p class="title-comment">
             내 생각과 우리 지역구 후보자의 공약은 얼마나 비슷할까요?
         </p>
-        <!-- <div  class="dropdown">
-            <form method="GET">
-                {% if temp_cities is None %}
-                    <div id="sidoselect">시/도 선택 </div>
-                {% else %}
-                    <div id="sidoselect">{{temp_cities}} </div>
 
-                {% endif %}
-                    <div class="dropdown-content">
-                        {% for i in cities.all %}
-                            <button type="submit" id="sido" value={{i.name}} name="cities">{{i.name}}</button>
-                        {% endfor %}
-                    </div>
-            </form>
-        </div> -->
-       
         <div class="dropdown2">
             <form method="GET">
                     <div onclick="open_gugundrop()" class="dropbtn2">
@@ -50,7 +35,6 @@
                     </div>
 
                 <div class="dropdown-content2">
-                        <input type="hidden" name="bf_cities" value="{{temp_cities}}">
                     {% for j in gungus %}
                         <button type="submit" value={{j.id}} name="gungus">{{j.sgg_name}}</button>
                     {% endfor %}
@@ -96,7 +80,7 @@
             </ul>
         </div>
         
-        {% if target_candidates %}
+        
         <div class="sector_choice">
             <div class="divided">
                 <button onclick="chocie_check();" class="choice_type1">교육</button>
@@ -111,7 +95,6 @@
             </div>
         </div>
     </section>
-    {% endif %}
     
     <section class="resultWrap">
         <h2>후보를 선택해서 자세한 정보를 알아보세요!(사진 클릭하면 나옴)</h2>
