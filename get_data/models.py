@@ -73,6 +73,8 @@ class Candidate(models.Model):
     career2 = models.CharField('경력2', max_length=255)
     status = models.CharField('등록상태', max_length=200)
 
+    attend = models.CharField('본회의 출석률',max_length=100)
+    
     class Meta:
         ordering = ['id']
 

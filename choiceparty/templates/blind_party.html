@@ -18,7 +18,7 @@
 
         <section class="choice_container">
             
-           
+            
             {%if all_party.all|length == 1 %}
             <div class="result_party">
 
@@ -73,6 +73,17 @@
                     결승전 시작하기<br>
                     <span>click!</span>
                     {%else%}
+
+                    {% if all_party.all|length == 51 %}
+                        <div class="choice_starttext">
+                            <img src="{% static 'image/election_icon.png' %}" alt="선택하기">
+                            공약으로 <br>
+                            여러분의 정당을 찾아보세요!
+
+
+                        </div>
+                      
+                    {%endif%}
                     {{len_party}}강 시작하기<br>
                     <span>click!</span>
                     {%endif%}

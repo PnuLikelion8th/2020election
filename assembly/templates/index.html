@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>부산 총선후보 파헤치기</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
     <script type="text/javascript" src="{% static 'js/index.js' %}"></script>
 </head>
@@ -22,12 +22,13 @@
         <p class="title-comment">
             우리동네 후보자들의 공약을 비교해봐요!
         </p>
-        <div class="dropdown">
+        <div onclick="drop_open()" class="dropdown">
             <form method="GET">
                 {% if temp_cities is None %}
-                <input type="button" class="dropbtn" id="sidoselect" value="시/도 선택">
+                    <div id="sidoselect">시/도 선택 </div>
                 {% else %}
-                <input type="button" class="dropbtn" id="sidoselect" value="{{temp_cities}}">
+                    <div id="sidoselect">{{temp_cities}} </div>
+
                 {% endif %}
                     <div class="dropdown-content">
                         {% for i in cities.all %}
@@ -35,7 +36,7 @@
                         {% endfor %}
                     </div>
             </form>
-        </div>
+        </input>
         <br>
         <br>
         <div class="dropdown">
@@ -43,9 +44,9 @@
                 {% if temp_cities is not None %}
                 <button class="dropbtn">
                     {% if temp_gungus is None %}
-                    지역구 선택
+                        지역구 선택
                     {% else %}
-                    {{temp_gungus}}
+                        {{temp_gungus}}
                     {% endif %}
                 </button>
                 {% endif %}
@@ -100,6 +101,7 @@
 
                             
                                 <div onclick="candidate_info('{{i.name}}','{{i.job}}');" class="image-cropper">
+                                    <div class="image-info-ani"><div>클릭!</div></div>
                                     <img src="http://cpmadang.org/sites/default/files/{{i.candi_id}}.JPG">
                                 </div>
                             

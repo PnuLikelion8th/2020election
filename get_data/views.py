@@ -96,3 +96,12 @@ def makecandi(request):
     # del_candi = Candidate.objects.all()
     # del_candi.delete()
     return redirect('index')
+
+
+def makeattend(request):
+
+    for i in Candidate.objects.all():
+        print(i.name,i.jdname)
+
+        
+    return redirect('index')
