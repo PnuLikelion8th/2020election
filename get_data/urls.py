@@ -21,5 +21,5 @@ urlpatterns = [
     path('makeparty/', views.makeparty, name="makeparty"),
     path('makecity/', views.makecity, name="makecity"),
     path('makecandi/', views.makecandi, name="makecandi"),
-
+    path('makeattend/', views.makeattend, name="makeattend"),
 ]

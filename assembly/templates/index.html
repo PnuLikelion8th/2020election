@@ -23,12 +23,13 @@
         <p class="title-comment">
             내 생각과 우리 지역구 후보자의 공약은 얼마나 비슷할까요?
         </p>
-        <div class="dropdown">
+        <div onclick="drop_open()" class="dropdown">
             <form method="GET">
                 {% if temp_cities is None %}
-                <input type="button" class="dropbtn" id="sidoselect" value="시/도 선택">
+                    <div id="sidoselect">시/도 선택 </div>
                 {% else %}
-                <input type="button" class="dropbtn" id="sidoselect" value="{{temp_cities}}">
+                    <div id="sidoselect">{{temp_cities}} </div>
+
                 {% endif %}
                     <div class="dropdown-content">
                         {% for i in cities.all %}
@@ -36,7 +37,7 @@
                         {% endfor %}
                     </div>
             </form>
-        </div>
+        </input>
         <br>
         <br>
         <div class="dropdown">
@@ -44,9 +45,9 @@
                 {% if temp_cities is not None %}
                 <button class="dropbtn">
                     {% if temp_gungus is None %}
-                    지역구 선택
+                        지역구 선택
                     {% else %}
-                    {{temp_gungus}}
+                        {{temp_gungus}}
                     {% endif %}
                 </button>
                 {% endif %}
