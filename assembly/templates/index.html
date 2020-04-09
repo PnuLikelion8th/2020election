@@ -23,7 +23,7 @@
         <p class="title-comment">
             내 생각과 우리 지역구 후보자의 공약은 얼마나 비슷할까요?
         </p>
-        <div onclick="drop_open()" class="dropdown">
+        <!-- <div  class="dropdown">
             <form method="GET">
                 {% if temp_cities is None %}
                     <div id="sidoselect">시/도 선택 </div>
@@ -37,31 +37,30 @@
                         {% endfor %}
                     </div>
             </form>
-        </input>
-        <br>
-        <br>
-        <div class="dropdown">
+        </div> -->
+       
+        <div class="dropdown2">
             <form method="GET">
                 {% if temp_cities is not None %}
-                <button class="dropbtn">
-                    {% if temp_gungus is None %}
-                        지역구 선택
-                    {% else %}
-                        {{temp_gungus}}
-                    {% endif %}
-                </button>
+                    <div onclick="open_gugundrop()" class="dropbtn2">
+                        {% if temp_gungus is None %}
+                            지역구 선택
+                        {% else %}
+                            {{temp_gungus}}
+                        {% endif %}
+                    </div>
                 {% endif %}
-                <div class="dropdown-content">
-                    <input type="hidden" name="bf_cities" value="{{temp_cities}}">
+
+                <div class="dropdown-content2">
+                        <input type="hidden" name="bf_cities" value="{{temp_cities}}">
                     {% for j in gungus %}
-                    <button type="submit" value={{j.id}} name="gungus">{{j.sgg_name}}</button>
+                        <button type="submit" value={{j.id}} name="gungus">{{j.sgg_name}}</button>
                     {% endfor %}
                 </div>
             </form>
         </div>
     </section>
-    <br>
-    <br>
+   
     {% if target_candidates %}
     <section class="who">
         <h2>우리 지역 후보들은

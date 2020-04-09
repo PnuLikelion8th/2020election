@@ -27,13 +27,9 @@ def index(request):
         return render(request, 'index.html', context)
 
 
-    elif request.GET.get('cities'):
-        gungus=Gungu.objects.filter(sd_name = City.objects.get(name=request.GET['cities']))
-        temp_cities = request.GET.get('cities')
-        context = {'cities' : cities, 'temp_cities':temp_cities, 'gungus' :gungus, 'candidates':candidates, 'parties':parties, 'partypolicies':partypolicies}
-        return render(request, 'index.html', context)
+    
 
-    temp_cities = None
-    temp_gungus = None
+    gungus=Gungu.objects.filter(sd_name = City.objects.get(name='부산광역시'))
+    temp_cities = request.GET.get('cities')
     context = {'cities' : cities, 'temp_cities':temp_cities, 'gungus' :gungus, 'candidates':candidates, 'parties':parties, 'partypolicies':partypolicies}
     return render(request, 'index.html', context)

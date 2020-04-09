@@ -12,5 +12,22 @@ function candidate_info(name,job){
 }
 
 function drop_open(){
-    document.querySelector('.dropdown-content').classList.add('show')
+    if (document.querySelector('.dropdown-content').classList.contains('show')){
+        document.querySelector('.dropdown-content').classList.remove('show')
+
+    }else{
+        document.querySelector('.dropdown-content').classList.add('show')
+
+    }
+
+}
+
+function open_gugundrop(){
+    if (document.querySelector('.dropdown-content2').classList.contains('show')) {
+        document.querySelector('.dropdown-content2').classList.remove('show')
+
+    } else {
+        document.querySelector('.dropdown-content2').classList.add('show')
+
+    }
 }
