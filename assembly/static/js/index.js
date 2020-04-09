@@ -31,3 +31,25 @@ function open_gugundrop(){
 
     }
 }
+
+
+
+
+// window.onload = () =>{
+//     const buttons = document.querySelectorAll('.choice_type');
+//     for (let i=0; i<buttons.length; i++){
+//         buttons[i].addEventListener("click",function(){
+//             this.style.background="buttonface";
+//             // this.style.background="black";
+//         })
+//     }
+// }
+
+
+// function chocie_check(){
+//     for (let i=0; i<6; i++){
+//         const button{i} = document.querySelector('choice_type1');
+
+//     }
+    
+// }
