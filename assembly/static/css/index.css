@@ -355,3 +355,14 @@ img {
     border-radius: 8px;
     background-color: gray;
   }
+
+  
+  /* 정당 색깔 css  */
+.더불어민주당{background:#004EA2;}
+.미래통합당{background:#EF426F;}
+.민생당{background:#0BA95F;}
+.국가혁명배당금당{background:#E7141A;}
+.우리공화당{background:#009944;}
+.정의당{background:#FFCC00;}
+.민중당{background:#F26522;}
+.무소속{background:#808080;}
