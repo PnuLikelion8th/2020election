@@ -176,9 +176,9 @@ li {
     cursor: pointer;
 }
 
-.image-cropper:hover {
+/* .image-cropper:hover {
     box-shadow: 0 0 8px rgba(77, 63, 63);
-}
+} */
 
 img {
     display: inline;
@@ -189,29 +189,24 @@ img {
 .image-info-ani{
     position: absolute;
     z-index: 1;
-    bottom: 0;
-    left:0;
-    background: gray;
-    width: 100px;
-    height: 100px;
+    bottom: 53px;
+    left:138px;
+    width: 30px;
+    height: 30px;
     animation : shadowing 2s infinite ease-in forwards alternate;
 }
-.image-info-ani>div{
+/* .image-info-ani>div{
     margin-top: 38px;
-}
+} */
 @keyframes shadowing{
     0%{
         opacity: 0;
-
     }
-    50%{
-        opacity: 0.1;
-    }
-    75%{
-        opacity: 0.3;
+    70%{
+        opacity: 0;
     }
     100%{
-        opacity: 0.8;
+        opacity: 1;
     }
 }
 
@@ -358,11 +353,11 @@ img {
 
   
   /* 정당 색깔 css  */
-.더불어민주당{background:#004EA2;}
-.미래통합당{background:#EF426F;}
-.민생당{background:#0BA95F;}
-.국가혁명배당금당{background:#E7141A;}
-.우리공화당{background:#009944;}
-.정의당{background:#FFCC00;}
-.민중당{background:#F26522;}
-.무소속{background:#808080;}
+.더불어민주당{box-shadow: 0 0 8px #004EA2;}
+.미래통합당{box-shadow: 0 0 8px #EF426F;}
+.민생당{box-shadow: 0 0 8px #0BA95F;}
+.국가혁명배당금당{box-shadow: 0 0 8px #E7141A;}
+.우리공화당{box-shadow: 0 0 8px #009944;}
+.정의당{box-shadow: 0 0 8px #FFCC00;}
+.민중당{box-shadow: 0 0 8px #F26522;}
+.무소속{box-shadow: 0 0 8px #808080;}
