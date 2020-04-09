@@ -228,22 +228,44 @@ img {
 }
 
 .sector_choice{
-    width: 320px;
+    width: 648px;
     margin: 0 auto;
     margin-top: 20px;
     display: flex;
-    /* align-items: center; */
     justify-content: space-between;
 }
-.sector_choice>button{
+
+.sector_choice>div>button{
     text-decoration: none;
     margin: 0;
     outline: 0;
     padding:5px 10px;
-    border: 3px solid black;
+    border: 2px solid black;
     border-radius: 10px;
     cursor: pointer;
+    font-weight:bold;
 }
+
+@media (max-width:850px){
+    .sector_choice{
+        width: 320px;
+    }
+    .divided{
+        display: grid;
+        width: 300px;
+        box-sizing: border-box;
+    }
+    .sector_choice>div>button{
+        padding: 5px 0px;
+        border-width: 2px;
+        margin:3px;
+    }
+    body{
+        margin:0;
+        padding:0;
+    }
+}
+
 .talk_section{
     position: absolute;
     /* box-shadow: 0 0px 10px 2px rgba(0,0,0,0.5); */
