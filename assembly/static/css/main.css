@@ -32,3 +32,7 @@ body {
 .icon {
     height: 20px;
 }
+
+p {
+    font-size: 10px;
+}
