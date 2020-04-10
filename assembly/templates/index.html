@@ -1,4 +1,5 @@
 {% load static %}
+{% load custom_tags %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -63,22 +64,46 @@
                     <div class="candidate_section">
                         <div class="talk_section">
                             <div class="promise1">
-                                {{i.promise1}}
+                                {% if i.promise %}
+                                {{i.promise1|split_promise|safe}}
+                                {% else %}
+                                관련 주요 공약이 없습니다.
+                                {% endif %}
                             </div>
                             <div class="promise2">
-                                {{i.promise2}}
+                                {% if i.promise2 %}
+                                {{i.promise2|split_promise|safe}}
+                                {% else %}
+                                관련 주요 공약이 없습니다.
+                                {% endif %}
                             </div>
                             <div class="promise3">
-                                {{i.promise3}}
+                                {% if i.promise3 %}
+                                {{i.promise3|split_promise|safe}}
+                                {% else %}
+                                관련 주요 공약이 없습니다.
+                                {% endif %}
                             </div>
                             <div class="promise4">
-                                {{i.promise4}}
+                                {% if i.promise4 %}
+                                {{i.promise4|split_promise|safe}}
+                                {% else %}
+                                관련 주요 공약이 없습니다.
+                                {% endif %}
                             </div>
                             <div class="promise5">
-                                {{i.promise5}}
+                                {% if i.promise5 %}
+                                {{i.promise5|split_promise|safe}}
+                                {% else %}
+                                관련 주요 공약이 없습니다.
+                                {% endif %}
                             </div>
                             <div class="promise6">
-                                {{i.promise6}}
+                                {% if i.promise6 %}
+                                {{i.promise6|split_promise|safe}}
+                                {% else %}
+                                관련 주요 공약이 없습니다.
+                                {% endif %}
                             </div>
                             <div class="talk_section_tail"></div>
                             <div class="talk_section_tail_inner"></div>
