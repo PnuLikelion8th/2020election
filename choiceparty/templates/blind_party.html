@@ -2,15 +2,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163354800-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-163354800-1');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/blind_party.css' %}">
+    <title>정당 월드컵</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/blind_party.css' %}?dt={% now 'U' %}">
+    <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
 </head>
 <body> 
     <a class="home_fix_link" href="{% url 'main' %}">
-        메인으로
+        <img src="{% static 'image/main_icon.png' %}" alt="메인으로" >
     </a>
     <div class="party_container">
         
@@ -51,6 +61,7 @@
                     </div>
                     {%endfor%}
                     {%else%}
+                    <img class="no_submit_class" src="{% static 'image/no_submit.png'%}" alt="공약을 제출하지 않았습니다">
                     <span>이 정당의 공약은 없습니다.</span>
                     {%endif%}
 
@@ -64,6 +75,7 @@
             {%if msg != None %}
 
                 <div onclick="hide_door()" class="party_choice_door">
+                    <img src="{% static 'image/happy_icon.png'%}" alt="기쁜사진">
                     어떤 정당이<br>
                     부전승으로<br> 
                     올라갔습니다.<br>
@@ -134,6 +146,8 @@
                                     </div>
                                 {%endfor%}
                             {%else%}
+                                <img class="no_submit_class" src="{% static 'image/no_submit.png'%}" alt="공약을 제출하지 않았습니다">
+
                                 <span>이 정당의 공약은 없습니다.</span>
                             {%endif%}
                     </div>
@@ -173,6 +187,8 @@
                                         </div>
                                     {%endfor%}
                                 {%else%}
+                                    <img class="no_submit_class" src="{% static 'image/no_submit.png'%}" alt="공약을 제출하지 않았습니다">
+
                                     <span>이 정당의 공약은 없습니다.</span>
                                 {%endif%}
                             

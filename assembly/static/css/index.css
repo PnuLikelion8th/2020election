@@ -56,7 +56,7 @@ h2 {
   /* The container <div> - needed to position the dropdown content */
 .dropdown, .dropdown2{
     /* border:1px solid red; */
-    width:200px;
+    width:160px;
     
     margin: 0 auto;
     cursor: pointer;
@@ -106,6 +106,7 @@ h2 {
     margin:2px;
     color:#777;
     border-radius: 10px;
+    font-size:0.75rem;
 }
 .dropdown-content > button:hover,
 .dropdown-content2 > button:hover{
@@ -292,6 +293,18 @@ img {
         padding:0;
     }
 }
+.home_fix_link{
+    position: fixed;
+    top:15px;
+    right:15px;
+    z-index:3;
+    color:#777;
+    font-weight: 800;
+    text-decoration: unset;
+}
+.home_fix_link > img{
+    width:70px;
+}
 
 .talk_section{
     display: none;
@@ -401,7 +414,7 @@ img {
 }
 
 .x_btn{
-    position: fixed;
+    position: absolute;
     right: 12px;
     width: 20px;
     height: 20px;
