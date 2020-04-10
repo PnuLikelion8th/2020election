@@ -120,6 +120,12 @@ h2 {
     white-space: nowrap;
 }
 
+.whocomment{
+    text-align: center;
+    font-size: 13px;
+    letter-spacing: -1px;
+}
+
 ul {
     text-align: center;
     padding-top: 200px;
