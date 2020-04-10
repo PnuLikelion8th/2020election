@@ -97,6 +97,13 @@ function chocie_check(e){
 
     let promise_list = [promise1,promise2,promise3,promise4,promise5,promise6]
 
+    let talk_section = document.querySelectorAll('.talk_section')
+
+    for (let k=0; k<talk_section.length; k++){
+        talk_section[k].style.display="block"
+    }
+    
+
     for(let i=0; i<6; i++){
         for(let j=0; j<promise_list[i].length; j++){
             promise_list[i][j].style.display="none"
