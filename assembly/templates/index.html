@@ -22,45 +22,26 @@
         <p class="title-comment">
             우리동네 후보자들의 공약을 비교해봐요!
         </p>
-        <div onclick="drop_open()" class="dropdown">
-            <form method="GET">
-                {% if temp_cities is None %}
-                    <div id="sidoselect">시/도 선택 </div>
-                {% else %}
-                    <div id="sidoselect">{{temp_cities}} </div>
 
-                {% endif %}
-                    <div class="dropdown-content">
-                        {% for i in cities.all %}
-                            <button type="submit" id="sido" value={{i.name}} name="cities">{{i.name}}</button>
-                        {% endfor %}
-                    </div>
-            </form>
-        </input>
-        <br>
-        <br>
-        <div class="dropdown">
+        <div class="dropdown2">
             <form method="GET">
-                {% if temp_cities is not None %}
-                <button class="dropbtn">
-                    {% if temp_gungus is None %}
-                        지역구 선택
-                    {% else %}
-                        {{temp_gungus}}
-                    {% endif %}
-                </button>
-                {% endif %}
-                <div class="dropdown-content">
-                    <input type="hidden" name="bf_cities" value="{{temp_cities}}">
+                    <div onclick="open_gugundrop()" class="dropbtn2">
+                        {% if temp_gungus is None %}
+                            지역구 선택
+                        {% else %}
+                            {{temp_gungus}}
+                        {% endif %}
+                    </div>
+
+                <div class="dropdown-content2">
                     {% for j in gungus %}
-                    <button type="submit" value={{j.id}} name="gungus">{{j.sgg_name}}</button>
+                        <button type="submit" value={{j.id}} name="gungus">{{j.sgg_name}}</button>
                     {% endfor %}
                 </div>
             </form>
         </div>
     </section>
-    <br>
-    <br>
+   
     {% if target_candidates %}
     <section class="who">
         <h2>우리 지역 후보들은
@@ -69,242 +50,60 @@
         </h2>
         <div class="whoWrap">
             <ul>
-                <!-- <li> -->
-                    <!-- {% for i in candidates.all %}
-                    <div class="image-cropper">
-                        <img src="{% static 'cha.jpg' %}">
-                    </div>
-                    <p class="candidatename">{{i.name}}</p>
-                    <p class="partyname">{{i.jdname}}</p>
-                    {% endfor %}
-                </li> -->
+
+                {%for i in target_candidates%}
                 <li>
-                {% if not target_candidates and temp_gungus %}  
-                   논논
-                   매칭되는 친구가 없어요!
-                   
-                {% elif not target_candidates %}
-                    ~언능골라~
-
-                {% else %}
-
-                    {%for i in target_candidates%}
-                    <li>
-                        <div class="candidate_section">
-                            <div class="talk_section">
-                                <div>
-                                    asdasdsad내용~asdsad내용~asdsad내용~asdsad내용~asdsad내용~asdsad내용~
-                                </div>
-                                <div class="talk_section_tail"></div>
-                                <div class="talk_section_tail_inner"></div>
+                    <div class="candidate_section">
+                        <div class="talk_section">
+                            <div>
+                                asdasdsad내용~asdsad내용~asdsad내용~asdsad내용~asdsad내용~asdsad내용~
                             </div>
-
-                            
-                                <div onclick="candidate_info('{{i.name}}','{{i.job}}');" class="image-cropper">
-                                    <div class="image-info-ani"><div>클릭!</div></div>
-                                    <img src="http://cpmadang.org/sites/default/files/{{i.candi_id}}.JPG">
-                                </div>
-                            
-
-                            <p class="candidatename">{{i.name}}</p>
-                            <p class="partyname">{{i.jdname}}</p>
-                            
+                            <div class="talk_section_tail"></div>
+                            <div class="talk_section_tail_inner"></div>
                         </div>
-                    </li>
-                    {% endfor %}
-                {% endif %}
-            </ul>
-        </div>
-        
-        {% if temp_gungus and target_candidates %}
-        <div class="sector_choice">
-            <button>부문1</button>
-            <button>부문2</button>
-            <button>부문3</button>
-            <button>부문4</button>
-            <button>부문5</button>
-        </div>
-        {% endif %}
-    </section>
-    {% endif %}
-    {% comment %}
-    <section>
-        <h2>몇 개의 질문에 대한
-            <br>
-            나의 생각을 선택해주세요
-        </h2>
-        <!-- 좌우스크롤 질문카드 -->
-        <div class="cardWrap" -ms-overflow-style: none;>
-            <div class="card">
-                <div class="container">
-                <p>
-                    금정구 육아환경 개선을 위해
-                </p>
-                <div class="selectWrap">
-                    <div class = "select">
-                        <button class = "select-btn">방과후 교육시설 확충</button>
-                    </div>
-                    <div class = "select">
-                        <button class = "select-btn">유모차 대여</button>
-                    </div>
-                    <div class = "select">
-                        <button class = "select-btn">학원 교습비 동백전 할인 지원</button>
-                    </div>
-                    <div class = "select">
-                        <button class = "select-btn">어린이 공공 체육시설 건립</button>
-                    </div>
-                </div>
-                <p>
-                    이 가장 필요하다고 생각한다.
-                </p>
-                </div>
-            </div>
-            <div class="card">
-                <div class="container">
-                <p>
-                    금정구 육아환경 개선을 위해
-                </p>
-                <div class="selectWrap">
-                    <div class = "select">
-                        <button class = "select-btn">방과후 교육시설 확충</button>
-                    </div>
-                    <div class = "select">
-                        <button class = "select-btn">유모차 대여</button>
-                    </div>
-                    <div class = "select">
-                        <button class = "select-btn">학원 교습비 동백전 할인 지원</button>
-                    </div>
-                    <div class = "select">
-                        <button class = "select-btn">어린이 공공 체육시설 건립</button>
-                    </div>
-                </div>
-                <p>
-                    이 가장 필요하다고 생각한다.
-                </p>
-                </div>
-            </div>
-            <div class="card">
-                <div class="container">
-                <p>
-                    금정구 육아환경 개선을 위해
-                </p>
-                <div class="selectWrap">
-                    <div class = "select">
-                        <button class = "select-btn">방과후 교육시설 확충</button>
-                    </div>
-                    <div class = "select">
-                        <button class = "select-btn">유모차 대여</button>
-                    </div>
-                    <div class = "select">
-                        <button class = "select-btn">학원 교습비 동백전 할인 지원</button>
-                    </div>
-                    <div class = "select">
-                        <button class = "select-btn">어린이 공공 체육시설 건립</button>
-                    </div>
-                </div>
-                <p>
-                    이 가장 필요하다고 생각한다.
-                </p>
-                </div>
-            </div>
-            <div class="card">
-                <div class="container">
-                <p>
-                    금정구 육아환경 개선을 위해
-                </p>
-                <div class="selectWrap">
-                    <div class = "select">
-                        <button class = "select-btn">방과후 교육시설 확충</button>
-                    </div>
-                    <div class = "select">
-                        <button class = "select-btn">유모차 대여</button>
-                    </div>
-                    <div class = "select">
-                        <button class = "select-btn">학원 교습비 동백전 할인 지원</button>
-                    </div>
-                    <div class = "select">
-                        <button class = "select-btn">어린이 공공 체육시설 건립</button>
-                    </div>
-                </div>
-                <p>
-                    이 가장 필요하다고 생각한다.
-                </p>
-                </div>
-            </div>
-            <div class="card">
-                <div class="container">
-                <p>
-                    금정구 육아환경 개선을 위해
-                </p>
-                <div class="selectWrap">
-                    <div class = "select">
-                        <button class = "select-btn">방과후 교육시설 확충</button>
-                    </div>
-                    <div class = "select">
-                        <button class = "select-btn">유모차 대여</button>
-                    </div>
-                    <div class = "select">
-                        <button class = "select-btn">학원 교습비 동백전 할인 지원</button>
-                    </div>
-                    <div class = "select">
-                        <button class = "select-btn">어린이 공공 체육시설 건립</button>
-                    </div>
-                </div>
-                <p>
-                    이 가장 필요하다고 생각한다.
-                </p>
-                </div>
-            </div>
-        </div>
-    </section> 
-    {% endcomment %}
 
-    {% if target_candidates %}
-    <section class="resultWrap">
-        <h2>후보를 선택해서 자세한 정보를 알아보세요!(사진 클릭하면 나옴)</h2>
-        
-        <div id="cd_dt_info"></div>
-    </section>
-    {% endif %}
-    {% comment %}
-    <section>
-        <h2>다른 후보와의
-            <br>
-            공약 궁합도 살펴봐요!
-        </h2>
-        <div class="whoWrap">
-            <ul>
-                <li>
-                    <div class="image-cropper">
-                        <img src="{% static 'cha.jpg' %}">
+                        <img class="image-info-ani" src="{% static 'img/cursor.png' %}">
+                            <div onclick="candidate_info('{{i.name}}','{{i.job}}');" class="image-cropper {{i.jdname}}">
+                                
+                                <img src="http://cpmadang.org/sites/default/files/{{i.candi_id}}.JPG">
+                            </div>
+                        
+
+                        <p class="candidatename">{{i.name}}</p>
+                        <p class="partyname">{{i.jdname}}</p>
+                        
                     </div>
-                    <p class="candidatename">김뫄뫄</p>
-                    <p class="partyname">마당</p>
                 </li>
-                <li>
-                    <div class="image-cropper">
-                        <img src="{% static 'cha.jpg' %}">
-                    </div>
-                    <p class="candidatename">최솨솨</p>
-                    <p class="partyname">멋사당</p>
-                </li>
-                <li>
-                    <div class="image-cropper">
-                        <img src="{% static 'cha.jpg' %}">
-                    </div>
-                    <p class="candidatename">이롸로ㅏ</p>
-                    <p class="partyname">고양이당</p>
-                </li>
-                <li>
-                    <div class="image-cropper">
-                        <img src="{% static 'cha.jpg' %}">
-                    </div>
-                    <p class="candidatename">최솨솨</p>
-                    <p class="partyname">멋사당</p>
-                </li>
+                {% endfor %}
+
             </ul>
         </div>
+        
+        
+        <div class="sector_choice">
+            <div class="divided">
+                <button onclick="chocie_check();" class="choice_type1">교육</button>
+                <button onclick="chocie_check();" class="choice_type2">재난/코로나</button>
+                <button onclick="chocie_check();" class="choice_type3">여성/노인/장애인/어린이</button>
+            </div>
+            <div class="divided">
+                <button onclick="chocie_check();" class="choice_type4">도시개발</button>
+                <button onclick="chocie_check();" class="choice_type5">소상공인/자영업자</button>
+                <button onclick="chocie_check();" class="choice_type6">청년/일자리</button>
+                
+            </div>
+        </div>
     </section>
-    {% endcomment %}
+
+    <div class="show_info">
+        <img onclick="x_btn()" class= "x_btn" src="{% static 'image/close_icon.png' %}">
+        <div id="cd_dt_info"></div>
+    </div>
+    
+    <section class="resultWrap">
+        <br> <br> <br>
+    </section>
+    {% endif %}
+    
 </body>
 </html>

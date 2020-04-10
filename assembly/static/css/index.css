@@ -30,36 +30,54 @@ h2 {
 /* Dropdown Button */
 
   /* The container <div> - needed to position the dropdown content */
-.dropdown{
-    border:1px solid red;
+.dropdown, .dropdown2{
+    /* border:1px solid red; */
     width:200px;
     
     margin: 0 auto;
-    
+    cursor: pointer;
+    text-align: center;
+    line-height: 1.5;
+    font-weight: 800;
+    color:#777;
 }
-.dropbtn{
+ #sidoselect{
+    padding:10px 0;
+}
+.dropbtn,.dropbtn2{
     border:none;
     background: none;
-    border:1px solid red;
     width:100%;
     padding:10px 0 ;
     font-size:1.1rem;
     font-weight: 800;
     cursor: pointer;
+        border-radius: 10px;
+
+        box-shadow: 0 0px 10px 6px rgba(0,0,0,0.2) ;
+
 }
-.dropdown-content{
-    width:100%;
+.dropdown-content, .dropdown-content2{
+    width:200%;
     display: none;
+    margin-left:-50%;
+    margin-top:10px;
 }
-.dropdown-content > button {
+.dropdown-content > button,
+.dropdown-content2 > button {
     border:none;
     background: none;
     padding:10px 0;
-    width:48%;
+    width:23.5%;
     border:1px #ccc solid;
     cursor: pointer;
+    box-shadow: 0 0px 20px 1px rgba(0,0,0,0.1) ;
+    margin:2px;
+    color:#777;
+    border-radius: 5px;
 }
-.dropdown-content > button:hover{
+.dropdown-content > button:hover,
+.dropdown-content2 > button:hover{
     background-color: #ccc;
     color:black;
 }
@@ -162,9 +180,9 @@ li {
     cursor: pointer;
 }
 
-.image-cropper:hover {
+/* .image-cropper:hover {
     box-shadow: 0 0 8px rgba(77, 63, 63);
-}
+} */
 
 img {
     display: inline;
@@ -175,49 +193,66 @@ img {
 .image-info-ani{
     position: absolute;
     z-index: 1;
-    bottom: 0;
-    left:0;
-    background: gray;
-    width: 100px;
-    height: 100px;
+    bottom: 53px;
+    left:138px;
+    width: 30px;
+    height: 30px;
     animation : shadowing 2s infinite ease-in forwards alternate;
 }
-.image-info-ani>div{
+/* .image-info-ani>div{
     margin-top: 38px;
-}
+} */
 @keyframes shadowing{
     0%{
         opacity: 0;
-
     }
-    50%{
-        opacity: 0.1;
-    }
-    75%{
-        opacity: 0.3;
+    70%{
+        opacity: 0;
     }
     100%{
-        opacity: 0.8;
+        opacity: 1;
     }
 }
 
 .sector_choice{
-    width: 320px;
+    width: 648px;
     margin: 0 auto;
     margin-top: 20px;
     display: flex;
-    /* align-items: center; */
     justify-content: space-between;
 }
-.sector_choice>button{
+
+.sector_choice>div>button{
     text-decoration: none;
     margin: 0;
     outline: 0;
     padding:5px 10px;
-    border: 3px solid black;
+    border: 2px solid black;
     border-radius: 10px;
     cursor: pointer;
+    font-weight:bold;
 }
+
+@media (max-width:850px){
+    .sector_choice{
+        width: 320px;
+    }
+    .divided{
+        display: grid;
+        width: 300px;
+        box-sizing: border-box;
+    }
+    .sector_choice>div>button{
+        padding: 5px 0px;
+        border-width: 2px;
+        margin:3px;
+    }
+    body{
+        margin:0;
+        padding:0;
+    }
+}
+
 .talk_section{
     position: absolute;
     /* box-shadow: 0 0px 10px 2px rgba(0,0,0,0.5); */
@@ -281,3 +316,52 @@ img {
 .show{
     display: block;
 }
+
+.show_info{
+    display: none;
+    background: white;
+    position: fixed;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 320px;
+    /* height: 100px; */
+    height: 550px;
+    box-sizing: border-box;
+    overflow-y: scroll;
+    box-shadow: 0 0px 10px 6px rgba(0,0,0,0.2);
+    z-index: 3;
+    padding: 15px 10px;
+    word-break: break-all;
+}
+.x_btn{
+    position: fixed;
+    right: 12px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+
+::-webkit-scrollbar {
+    width: 5px;  /* 세로축 스크롤바 길이 */
+    height: 5px;  /* 가로축 스크롤바 길이 */
+  }
+  ::-webkit-scrollbar-track-piece {
+    background-color: #dddddd;
+  }
+  ::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background-color: gray;
+  }
+
+  
+  /* 정당 색깔 css  */
+.더불어민주당{box-shadow: 0 0 8px #004EA2;}
+.미래통합당{box-shadow: 0 0 8px #EF426F;}
+.민생당{box-shadow: 0 0 8px #0BA95F;}
+.국가혁명배당금당{box-shadow: 0 0 8px #E7141A;}
+.우리공화당{box-shadow: 0 0 8px #009944;}
+.정의당{box-shadow: 0 0 8px #FFCC00;}
+.민중당{box-shadow: 0 0 8px #F26522;}
+.무소속{box-shadow: 0 0 8px #808080;}
