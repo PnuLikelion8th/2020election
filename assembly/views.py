@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from get_data.models import Party, PartyPolicy, City, Gungu, Candidate 
-import urllib.request
-from urllib.parse import urlencode,quote_plus
+
+
 
 
 
