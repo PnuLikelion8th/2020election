@@ -297,9 +297,22 @@ img {
 .talk_section>div{
     white-space: normal;
     word-break: break-all;
+    /* min-height: 100px;
+    max-height: 400px;
+    overflow-y: scroll; */
 
 }
 
+.promise_list{
+    min-height: 85px;
+    max-height: 150px;
+    overflow-y: scroll;
+    margin : 10px;
+    font-size: 0.8rem;
+}
+.no_promise{
+    padding: 20px;
+}
 .talk_section_tail{
     position: absolute;
     bottom: -14px;
@@ -389,11 +402,12 @@ img {
     height: 5px;  /* 가로축 스크롤바 길이 */
   }
   ::-webkit-scrollbar-track-piece {
-    background-color: #dddddd;
+    background-color: white !important;
+    /* 이게 스크롤 밖 */
   }
   ::-webkit-scrollbar-thumb {
     border-radius: 8px;
-    background-color: gray;
+    background-color: #dddddd;
   }
 
   
