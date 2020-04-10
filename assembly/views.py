@@ -3,7 +3,8 @@ from get_data.models import Party, PartyPolicy, City, Gungu, Candidate
 
 
 
-
+def main(request):
+    return render(request, 'main.html')
 
 def index(request):
     cities = City.objects

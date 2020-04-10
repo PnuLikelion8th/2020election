@@ -25,6 +25,7 @@
                         {% else %}
                             {{temp_gungus}}
                         {% endif %}
+                        <img src="{% static 'image/election_icon.png' %}" class="icon">
                     </div>
 
                 <div class="dropdown-content2">
@@ -38,8 +39,8 @@
    
     {% if target_candidates %}
     <section class="who">
-        <h2> 우리동네 후보들의 
-            <br> 공약은 이렇습니다
+        <h2> 우리동네 후보의 
+            <br> 주요 공약은 이렇습니다
         </h2>
 
         <div class="sector_choice">
@@ -148,17 +149,5 @@
         <br> <br> <br>
     </section> 
     {% endif %}
-    
-    <h1 class="title">
-        정당 공약
-        <br>
-        블라인드
-        <br>
-        테스트
-        </h1>
-    <div class="subtitle2"> (와 재밌겠다) (박수짝짝) </div>
-    <a href="{% url 'blind_party'%}" class="jdworldcup"> 
-        지금 바로 테스트하기
-    </a>
 </body>
 </html>

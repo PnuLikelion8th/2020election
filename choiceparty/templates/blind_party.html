@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/blind_party.css' %}">
 </head>
 <body> 
-    <a class="home_fix_link" href="{% url 'index' %}">
+    <a class="home_fix_link" href="{% url 'main' %}">
         메인으로
     </a>
     <div class="party_container">
@@ -64,7 +64,9 @@
             {%if msg != None %}
 
                 <div onclick="hide_door()" class="party_choice_door">
-                    어떤 정당이 부전승으로 올라갔습니다.<br>
+                    어떤 정당이<br>
+                    부전승으로<br> 
+                    올라갔습니다.<br>
                     <span>click!</span>
                 </div>
             {% endif %}
@@ -77,8 +79,11 @@
                     {% if all_party.all|length == 51 %}
                         <div class="choice_starttext">
                             <img src="{% static 'image/election_icon.png' %}" alt="선택하기">
-                            공약으로 <br>
-                            여러분의 정당을 찾아보세요!
+                            공약으로 
+                            <br>
+                            여러분의 정당을
+                            <br>
+                            찾아보세요!
 
 
                         </div>
