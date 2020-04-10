@@ -26,11 +26,12 @@ body {
     border-radius: 50px;
     border : 1px #ccc solid;
     box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.26) ;
-
+    outline: none;
 }
 
 .icon {
     height: 20px;
+    margin-bottom: -4px;
 }
 
 p {

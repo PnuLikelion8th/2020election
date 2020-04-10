@@ -13,8 +13,12 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
-    <title>Document</title>
+    <meta property="og:title" content="2020 총선 파헤치기">
+    <meta property="og:description" content="지역구 후보 주요공약, 블라인드 정당 테스트">
+    <meta property="og:image" content="{% static 'img/ogimage.png' %}">
+    <title>부산 총선후보 파헤치기</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}?dt={% now 'U' %}">
+    <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
 </head>
 <body>
     <h1 class="title">
@@ -27,11 +31,21 @@
         <button type="button" onclick="location.href='{% url 'index'%}'" class="btn">지역구후보 주요공약  <img src="{% static 'image/election_icon.png' %}" class="icon"></button>
         <button type="button" onclick="location.href='{% url 'blind_party' %}'" class="btn">공약 블라인드테스트  <img src="{% static 'image/election_icon.png' %}" class="icon"></button>
     </div>
-
-    <p>본 서비스는
+    <br>
+    <p>
+        본 서비스는
         <br>
         공공데이터, 후보자 공약집, 참여연대 제공 데이터를
         <br>
-        기반으로 작성되었습니다.</p>
+        기반으로 작성되었습니다.
+    </p>
+    <br>
+    <p>
+        만든이 : 김태훈, 손혜림, 장치훈
+        <br>
+        부산대 멋쟁이사자처럼
+        <br>
+        제안 및 의견 : etcheef@likelion.org
+    </p>
 </body>
 </html>

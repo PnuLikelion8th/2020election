@@ -18,12 +18,12 @@ from django.urls import path, include
 from assembly import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('bakcha/', admin.site.urls),
     path('', views.main, name='main'),
     path('assembly/', views.index, name='index'),
 
     path('choiceparty/', include('choiceparty.urls')),
-    path('get_data/', include('get_data.urls')),
+    # path('get_data/', include('get_data.urls')),
   
 
 ]

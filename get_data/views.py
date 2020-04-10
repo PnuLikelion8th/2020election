@@ -27,21 +27,21 @@ def makeparty(request):
 
     
 
-    # for i in PARTY:
-    #     print(i,"...........")
-    #     resp = requests.get(URL + API_KEY + '&sgId='+DAY +
-    #                         '&partyName='+ i +'&resultType=json')
-    #     py_json = json.loads(resp.text)
-    #     if py_json['getPartyPlcInfoInqire']['item'] != []:
-    #         target = py_json['getPartyPlcInfoInqire']['item'][0]
-    #         for j in range(1, 11):
-    #             if target['prmsTitle'+str(j)] == "":
-    #                 break
+    for i in PARTY:
+        print(i,"...........")
+        resp = requests.get(URL + API_KEY + '&sgId='+DAY +
+                            '&partyName='+ i +'&resultType=json')
+        py_json = json.loads(resp.text)
+        if py_json['getPartyPlcInfoInqire']['item'] != []:
+            target = py_json['getPartyPlcInfoInqire']['item'][0]
+            for j in range(1, 11):
+                if target['prmsTitle'+str(j)] == "":
+                    break
 
-    #             PartyPolicy.objects.create(
-    #                 name= Party.objects.get(name = i), number=j, title=target['prmsTitle'+str(j)],
-    #                 category=target['prmsRealmName'+str(j)],
-    #                 desc=target['prmmCont'+str(j)])
+                PartyPolicy.objects.create(
+                    name= Party.objects.get(name = i), number=j, title=target['prmsTitle'+str(j)],
+                    category=target['prmsRealmName'+str(j)],
+                    desc=target['prmmCont'+str(j)])
 
     # del_party = PartyPolicy.objects.all()
     # del_party.delete()

@@ -1,3 +1,10 @@
+:focus{
+    background-color: none;
+}
+:active{
+        background-color: none;
+
+}
 section {
     height: 100%;
 }
@@ -74,7 +81,10 @@ h2 {
         border : 1px #ccc solid;
 
         box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.26) ;
-
+   
+}
+.dropbtn2 >img{
+    margin-bottom: -4px;
 }
 .dropdown-content, .dropdown-content2{
     width:200%;
@@ -281,6 +291,15 @@ img {
         padding:0;
     }
 }
+.home_fix_link{
+    position: fixed;
+    top:15px;
+    right:25px;
+    z-index:3;
+    color:#777;
+    font-weight: 800;
+    text-decoration: unset;
+}
 
 .talk_section{
     display: none;
@@ -304,11 +323,12 @@ img {
 }
 
 .promise_list{
-    min-height: 85px;
+    min-height: 19px;
     max-height: 150px;
     overflow-y: scroll;
     margin : 10px;
     font-size: 0.8rem;
+    text-align: left;
 }
 .no_promise{
     padding: 20px;

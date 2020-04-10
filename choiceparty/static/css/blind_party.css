@@ -112,6 +112,7 @@ body{
 .party_choice_door > span{
     color:#777;
     font-size:1.5rem;
+    pointer-events: none;
 }
 .zero_width{
     min-width: 0;

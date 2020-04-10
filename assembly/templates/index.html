@@ -14,21 +14,28 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="2020 총선 파헤치기">
+    <meta property="og:description" content="지역구 후보 주요공약, 블라인드 정당 테스트">
+    <meta property="og:image" content="{% static 'img/ogimage.png' %}">
     <title>부산 총선후보 파헤치기</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
-    <script type="text/javascript" src="{% static 'js/index.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}?dt={% now 'U' %}">
+    <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
+    <script type="text/javascript" src="{% static 'js/index.js' %}?dt={% now 'U' %}"></script>
 </head>
 <body>
-    <section class="mainpage">
+    <a class="home_fix_link" href="{% url 'main' %}">
+        메인으로
+    </a>
+    <section class="mainpage" data-color="green">
         <h1 class="title">
             우리동네
             <br>후보 공약
             <br>한눈에
             </h1>
         <div class="subtitle"> in 부산 </div>
-        <div class="dropdown2">
-            <form method="GET">
-                    <div onclick="open_gugundrop()" class="dropbtn2">
+        <div class="dropdown2" data-color="green">
+            <form method="GET" data-color="green">
+                    <div onclick="open_gugundrop()" class="dropbtn2" data-color="green">
                         {% if temp_gungus is None %}
                             지역구 선택
                         {% else %}
@@ -37,7 +44,7 @@
                         <img src="{% static 'image/election_icon.png' %}" class="icon">
                     </div>
 
-                <div class="dropdown-content2">
+                <div class="dropdown-content2" data-color="green">
                     {% for j in gungus %}
                         <button type="submit" value={{j.id}} name="gungus">{{j.sgg_name}}</button>
                     {% endfor %}
@@ -74,47 +81,45 @@
                     <div class="candidate_section">
                         <div class="talk_section">
                             <div class="promise1 promise_list">
-                                {% if i.promise %}
+                                {% if i.promise1 %}
                                 {{i.promise1|split_promise|safe}}
                                 {% else %}
-                                관련 주요 공약이 없습니다.
+                                &nbsp;  관련 주요 공약이 없습니다.
                                 {% endif %}
                             </div>
                             <div class="promise2 promise_list">
                                 {% if i.promise2 %}
-                                {{i.promise2|split_promise|safe}}
+                                    {{i.promise2|split_promise|safe}}
                                 {% else %}
-                                <div class="no_pro">
-                                관련 주요 공약이 없습니다.
-                                </div>
+                                &nbsp;  관련 주요 공약이 없습니다.    
                                 {% endif %}
                             </div>
                             <div class="promise3 promise_list">
                                 {% if i.promise3 %}
                                 {{i.promise3|split_promise|safe}}
                                 {% else %}
-                                관련 주요 공약이 없습니다.
+                                &nbsp;  관련 주요 공약이 없습니다.
                                 {% endif %}
                             </div>
                             <div class="promise4 promise_list">
                                 {% if i.promise4 %}
                                 {{i.promise4|split_promise|safe}}
                                 {% else %}
-                                관련 주요 공약이 없습니다.
+                                &nbsp;  관련 주요 공약이 없습니다.
                                 {% endif %}
                             </div>
                             <div class="promise5 promise_list">
                                 {% if i.promise5 %}
                                 {{i.promise5|split_promise|safe}}
                                 {% else %}
-                                관련 주요 공약이 없습니다.
+                                &nbsp;  관련 주요 공약이 없습니다.
                                 {% endif %}
                             </div>
                             <div class="promise6 promise_list">
                                 {% if i.promise6 %}
                                 {{i.promise6|split_promise|safe}}
                                 {% else %}
-                                관련 주요 공약이 없습니다.
+                                &nbsp;  관련 주요 공약이 없습니다.
                                 {% endif %}
                             </div>
                             <div class="talk_section_tail"></div>
@@ -130,10 +135,7 @@
 
                         <p class="candidatename">{{i.name}}</p>
                         <p class="partyname">{{i.jdname}}
-                            <p class="attend">
-                                20대 국회 본회의 출석률 : {{i.attend}}
-                            
-                            </p>
+                           
 
                         </p>
                         
