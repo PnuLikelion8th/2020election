@@ -5,9 +5,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="2020 총선 파헤치기">
+    <meta property="og:description" content="지역구 후보 주요공약, 블라인드 정당 테스트">
+    <meta property="og:image" content="{% static 'img/ogimage.png' %}">
     <title>부산 총선후보 파헤치기</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
-    <script type="text/javascript" src="{% static 'js/index.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}?dt={% now 'U' %}">
+    
+    <script type="text/javascript" src="{% static 'js/index.js' %}?dt={% now 'U' %}"></script>
 </head>
 <body>
     <section class="mainpage" data-color="green">
@@ -65,7 +69,7 @@
                     <div class="candidate_section">
                         <div class="talk_section">
                             <div class="promise1 promise_list">
-                                {% if i.promise %}
+                                {% if i.promise1 %}
                                 {{i.promise1|split_promise|safe}}
                                 {% else %}
                                 &nbsp;  관련 주요 공약이 없습니다.
