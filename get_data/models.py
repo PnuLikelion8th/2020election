@@ -82,7 +82,6 @@ class Candidate(models.Model):
     promise5 = models.TextField('소상공인/자영업자', blank=True)
     promise6 = models.TextField('청년/일자리', blank=True)  
 
-    
     class Meta:
         ordering = ['id']
 

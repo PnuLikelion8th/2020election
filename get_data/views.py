@@ -3,6 +3,12 @@ from .models import Party, PartyPolicy, City,Gungu,Candidate
 import json
 import requests
 
+
+import urllib.request
+from urllib.parse import urlencode, quote_plus
+from selenium import webdriver
+
+
 URL = 'http://apis.data.go.kr/9760000/PartyPlcInfoInqireService/getPartyPlcInfoInqire'
 DAY = "20200415"
 API_KEY = '?serviceKey=1xchWYQzhGHEZWwvB6UCLFzMCUxgox9p4lZ%2Fbj8%2FaOTeSBZ0cA4NCQt%2BLMgPTljOOxFBjJA5CuFsDfynkT0HXw%3D%3D'
@@ -13,6 +19,7 @@ PARTY = ['더불어민주당', '미래통합당', '민생당', '미래한국당'
          '미래당', '미래민주당', '미래자영업당', '민중민주당', '사이버모바일국민정책당', '새누리당', '시대전환', '여성의당',
          '우리당', '자유당', '새벽당', '정치개혁연합', '자영업당', '직능자영업당', '충청의미래당', '친박연대', '통일민주당', '통합민주당',
          '한국국민당', '한국복지당', '한나라당', '한반도미래연합', '홍익당']
+
 
 def makeparty(request):
     # for i in PARTY:
@@ -99,9 +106,36 @@ def makecandi(request):
 
 
 def makeattend(request):
-
-    for i in Candidate.objects.all():
-        print(i.name,i.jdname)
-
+    temp_gungu = Gungu.objects.filter(sd_name=City.objects.get(name="부산광역시"))
+    k = 1
+    for j in temp_gungu:
         
+        for i in Candidate.objects.filter(sggname=j):
+            can_name = i.name
+            can_party = i.jdname
+            print(can_name, can_party, i.attend)
+            k += 1
+            # driver = webdriver.Chrome(
+            #     'C:/Users/jangc/Desktop/2020project/2020election/chromedriver')
+            # try:
+                
+
+            #     get_url = f'http://watch.peoplepower21.org/?act=&mid=AssemblyMembers&vid=&mode=search&name={can_name}&party={can_party}&region=&sangim=&gender=&age=&elect_num=&singlebutton='
+            
+            #     driver.get(get_url)
+
+            #     driver.find_element_by_css_selector('#content > div.col-md-8 > div').click()
+            # # driver.find_element_by_xpath('//*[@id="_CONTENT"]/ul/li[1]/div/a').click()
+            #     result = driver.find_element_by_css_selector('#collapse3 > div > h3 > span')
+            # # result = driver.find_element_by_css_selector(
+            # #     'body > div > div.content > div > ul.list > li > ul > li.pic > a > img').get_attribute("src")
+            #     print(result.text)
+            #     i.attend = result.text
+            #     i.save()
+            #     print("성공")
+            # except:
+            #     print(can_name,"은 초선입니다.")
+            #     print("###########################################")
+
+            # driver.close()
     return redirect('index')
