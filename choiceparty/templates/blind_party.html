@@ -210,6 +210,7 @@
 <script>
     function marking(){
         let that = this.event.target
+        console.log(this.event.target.nextSibling.nextSibling.firstChild.nextSibling)
         this.event.target.nextSibling.nextSibling.firstChild.nextSibling.classList.add('mark_show')
         
         setTimeout(hide.bind(null,that), 200)

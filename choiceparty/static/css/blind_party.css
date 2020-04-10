@@ -66,6 +66,7 @@ body{
     padding-right:50px;
     box-sizing: border-box;
     border-radius: 30px;
+    flex-direction: column;
 }
 
 
@@ -90,7 +91,6 @@ body{
     color:#777;
     font-weight: 800;
     font-size:1.25rem;
-    margin-top:-70px;
 }
 .party_choice_door{
     display: flex;
@@ -206,6 +206,7 @@ body{
 .mark_show{
     opacity:1;  
     transition: all 0.1s ease-in;
+    z-index:1;
 
 }
 .result_party{
