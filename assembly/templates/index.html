@@ -14,16 +14,16 @@
     <script type="text/javascript" src="{% static 'js/index.js' %}?dt={% now 'U' %}"></script>
 </head>
 <body>
-    <section class="mainpage" data-color="green">
+    <section class="mainpage" >
         <h1 class="title">
             우리동네
             <br>후보 공약
             <br>한눈에
             </h1>
         <div class="subtitle"> in 부산 </div>
-        <div class="dropdown2" data-color="green">
-            <form method="GET" data-color="green">
-                    <div onclick="open_gugundrop()" class="dropbtn2" data-color="green">
+        <div class="dropdown2" >
+            <form method="GET" >
+                    <div onclick="open_gugundrop()" class="dropbtn2" >
                         {% if temp_gungus is None %}
                             지역구 선택
                         {% else %}
@@ -32,7 +32,7 @@
                         <img src="{% static 'image/election_icon.png' %}" class="icon">
                     </div>
 
-                <div class="dropdown-content2" data-color="green">
+                <div class="dropdown-content2" >
                     {% for j in gungus %}
                         <button type="submit" value={{j.id}} name="gungus">{{j.sgg_name}}</button>
                     {% endfor %}
