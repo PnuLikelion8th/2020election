@@ -102,8 +102,15 @@ li {
 .partyname {
     font-size: 13px;
     letter-spacing: -1px;
+    position: relative;
 }
-
+.attend{
+    position: absolute;
+    bottom:-40px;
+    left:25px; 
+    font-size:0.75rem;
+    color:#777;
+}
 .cardWrap {
     overflow-y: auto;
     overflow-x: scroll;
@@ -176,9 +183,9 @@ li {
     cursor: pointer;
 }
 
-.image-cropper:hover {
+/* .image-cropper:hover {
     box-shadow: 0 0 8px rgba(77, 63, 63);
-}
+} */
 
 img {
     display: inline;
@@ -189,49 +196,66 @@ img {
 .image-info-ani{
     position: absolute;
     z-index: 1;
-    bottom: 0;
-    left:0;
-    background: gray;
-    width: 100px;
-    height: 100px;
+    bottom: 53px;
+    left:138px;
+    width: 30px;
+    height: 30px;
     animation : shadowing 2s infinite ease-in forwards alternate;
 }
-.image-info-ani>div{
+/* .image-info-ani>div{
     margin-top: 38px;
-}
+} */
 @keyframes shadowing{
     0%{
         opacity: 0;
-
     }
-    50%{
-        opacity: 0.1;
-    }
-    75%{
-        opacity: 0.3;
+    70%{
+        opacity: 0;
     }
     100%{
-        opacity: 0.8;
+        opacity: 1;
     }
 }
 
 .sector_choice{
-    width: 320px;
+    width: 648px;
     margin: 0 auto;
     margin-top: 20px;
     display: flex;
-    /* align-items: center; */
     justify-content: space-between;
 }
-.sector_choice>button{
+
+.sector_choice>div>button{
     text-decoration: none;
     margin: 0;
     outline: 0;
     padding:5px 10px;
-    border: 3px solid black;
+    border: 2px solid black;
     border-radius: 10px;
     cursor: pointer;
+    font-weight:bold;
 }
+
+@media (max-width:850px){
+    .sector_choice{
+        width: 320px;
+    }
+    .divided{
+        display: grid;
+        width: 300px;
+        box-sizing: border-box;
+    }
+    .sector_choice>div>button{
+        padding: 5px 0px;
+        border-width: 2px;
+        margin:3px;
+    }
+    body{
+        margin:0;
+        padding:0;
+    }
+}
+
 .talk_section{
     position: absolute;
     /* box-shadow: 0 0px 10px 2px rgba(0,0,0,0.5); */
@@ -295,3 +319,52 @@ img {
 .show{
     display: block;
 }
+
+.show_info{
+    display: none;
+    background: white;
+    position: fixed;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 320px;
+    /* height: 100px; */
+    height: 550px;
+    box-sizing: border-box;
+    overflow-y: scroll;
+    box-shadow: 0 0px 10px 6px rgba(0,0,0,0.2);
+    z-index: 3;
+    padding: 15px 10px;
+    word-break: break-all;
+}
+.x_btn{
+    position: fixed;
+    right: 12px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+
+::-webkit-scrollbar {
+    width: 5px;  /* 세로축 스크롤바 길이 */
+    height: 5px;  /* 가로축 스크롤바 길이 */
+  }
+  ::-webkit-scrollbar-track-piece {
+    background-color: #dddddd;
+  }
+  ::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background-color: gray;
+  }
+
+  
+  /* 정당 색깔 css  */
+.더불어민주당{box-shadow: 0 0 8px #004EA2;}
+.미래통합당{box-shadow: 0 0 8px #EF426F;}
+.민생당{box-shadow: 0 0 8px #0BA95F;}
+.국가혁명배당금당{box-shadow: 0 0 8px #E7141A;}
+.우리공화당{box-shadow: 0 0 8px #009944;}
+.정의당{box-shadow: 0 0 8px #FFCC00;}
+.민중당{box-shadow: 0 0 8px #F26522;}
+.무소속{box-shadow: 0 0 8px #808080;}
