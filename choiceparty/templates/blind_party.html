@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/blind_party.css' %}">
+    <title>정당 월드컵</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/blind_party.css' %}?dt={% now 'U' %}">
+    <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
 </head>
 <body> 
     <a class="home_fix_link" href="{% url 'main' %}">

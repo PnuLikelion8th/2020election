@@ -12,10 +12,10 @@ function candidate_info(giho,jd_name,name,age,job,edu,career1,career2,attend){
             "<div class='name'>안녕하세요! "+name+"후보입니다.</div>"+
 
             "<div class='belong_label'> -소속- </div>" +
-            "<div class='belong'>우리 지역구의 " + giho + "번" +jd_name +"소속이에요</div>"+
+            "<div class='belong'>우리 지역구의 " + giho + "번" +jd_name +"소속이에요.</div>"+
 
             "<div class='age_label'> -나이- </div>" +
-            "<div class='age'>현재 나이는" + age + "세 입니다" + "</div>"+
+            "<div class='age'>현재 나이는 " + age + "세입니다." + "</div>"+
 
             "<div class='edu_label'> -학력&직업- </div>" +
             "<div class='edu'>"+edu +"를 나와서<br> 현재 " + job+" 일을 하고 있습니다.</div>"+
@@ -87,30 +87,29 @@ function chocie_check(e){
     button5.style.boxShadow=""
     button6.style.boxShadow=""
 
-    let promise1 = document.querySelectorAll('.promise1');
-    let promise2 = document.querySelectorAll('.promise2');
-    let promise3 = document.querySelectorAll('.promise3');
-    let promise4 = document.querySelectorAll('.promise4');
-    let promise5 = document.querySelectorAll('.promise5');
-    let promise6 = document.querySelectorAll('.promise6');
+    const promise1 = document.querySelectorAll('.promise1');
+    const promise2 = document.querySelectorAll('.promise2');
+    const promise3 = document.querySelectorAll('.promise3');
+    const promise4 = document.querySelectorAll('.promise4');
+    const promise5 = document.querySelectorAll('.promise5');
+    const promise6 = document.querySelectorAll('.promise6');
 
 
-    let promise_list = [promise1,promise2,promise3,promise4,promise5,promise6]
+    const promise_list = [promise1,promise2,promise3,promise4,promise5,promise6]
 
-    let talk_section = document.querySelectorAll('.talk_section')
+    const talk_section = document.querySelectorAll('.talk_section')
 
     for (let k=0; k<talk_section.length; k++){
         talk_section[k].style.display="block"
     }
     
-
     for(let i=0; i<6; i++){
         for(let j=0; j<promise_list[i].length; j++){
             promise_list[i][j].style.display="none"
         }
     }
-    const makeshadow = "0 0px 10px 6px rgba(0,0,0,0.4)"
-    
+
+    const makeshadow = "0 0px 10px 6px rgba(0,0,0,0.3)"
 
     if (e.target === button1){
         e.target.style.boxShadow = makeshadow;

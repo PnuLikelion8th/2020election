@@ -291,6 +291,15 @@ img {
         padding:0;
     }
 }
+.home_fix_link{
+    position: fixed;
+    top:15px;
+    right:25px;
+    z-index:3;
+    color:#777;
+    font-weight: 800;
+    text-decoration: unset;
+}
 
 .talk_section{
     display: none;

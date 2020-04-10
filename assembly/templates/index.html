@@ -10,10 +10,13 @@
     <meta property="og:image" content="{% static 'img/ogimage.png' %}">
     <title>부산 총선후보 파헤치기</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}?dt={% now 'U' %}">
-    
+    <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
     <script type="text/javascript" src="{% static 'js/index.js' %}?dt={% now 'U' %}"></script>
 </head>
 <body>
+    <a class="home_fix_link" href="{% url 'main' %}">
+        메인으로
+    </a>
     <section class="mainpage" data-color="green">
         <h1 class="title">
             우리동네
