@@ -226,17 +226,17 @@ img {
     left:138px;
     width: 30px;
     height: 30px;
-    animation : shadowing 2s infinite ease-in forwards alternate;
+    animation : shadowing 1s infinite ease-in forwards alternate;
 }
 /* .image-info-ani>div{
     margin-top: 38px;
 } */
 @keyframes shadowing{
     0%{
-        opacity: 0;
+        opacity: 0.3;
     }
     70%{
-        opacity: 0;
+        opacity: 0.5;
     }
     100%{
         opacity: 1;
