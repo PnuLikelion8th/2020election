@@ -69,10 +69,38 @@ function x_btn(){
 // }
 
 
-// function chocie_check(){
-//     for (let i=0; i<6; i++){
-//         const button{i} = document.querySelector('choice_type1');
-
-//     }
+function chocie_check(e){
     
-// }
+    const button1 = document.querySelector('.choice_type1');
+    const button2 = document.querySelector('.choice_type2');
+    const button3 = document.querySelector('.choice_type3');
+    const button4 = document.querySelector('.choice_type4');
+    const button5 = document.querySelector('.choice_type5');
+    const button6 = document.querySelector('.choice_type6');
+    
+    
+    //init
+    button1.style.boxShadow=""
+    button2.style.boxShadow=""
+    button3.style.boxShadow=""
+    button4.style.boxShadow=""
+    button5.style.boxShadow=""
+    button6.style.boxShadow=""
+
+    const makeshadow = "0 0px 10px 6px rgba(0,0,0,0.4)"
+    
+
+    if (e.target === button1){
+        e.target.style.boxShadow = makeshadow;
+    } if (e.target === button2){
+        e.target.style.boxShadow = makeshadow;
+    } if (e.target === button3){
+        e.target.style.boxShadow = makeshadow;
+    } if (e.target === button4){
+        e.target.style.boxShadow = makeshadow;
+    } if (e.target === button5){
+        e.target.style.boxShadow = makeshadow;
+    } if (e.target === button6){
+        e.target.style.boxShadow = makeshadow;
+    } 
+}

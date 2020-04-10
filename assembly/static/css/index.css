@@ -2,15 +2,45 @@ section {
     height: 100%;
 }
 
-.title {
-    font-size: 2rem;
-    font-weight: bold;
-    letter-spacing: -6px;
+.jdworldcup{
+    margin: 30px;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 800 ;
+    height : 50px;
+    line-height: 50px;
+    background: none;
+    border-radius : 50px;
+    border: 1px #ccc solid;
+    box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.26) ;
 }
 
-.title-comment {
+.title {
+    font-size: 50px;
+    font-weight: bold;
+    letter-spacing: -6px;
+    color: white;
+    text-shadow : -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black, 4px 4px 0px black;
+    margin-bottom : 15px;
+    margin-top : 80px;
+    text-align: center;
+}
+
+.subtitle {
+    font-size : 20px;
+    font-weight: bold;
     letter-spacing: -2px;
-    padding-bottom: 5%;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.subtitle2 {
+    font-size :17px;
+    font-weight: bold;
+    letter-spacing: -2px;
+    margin-bottom: 25px;
+    text-align: center;
 }
 
 .mainpage {
@@ -19,8 +49,9 @@ section {
 
 h2 {
     text-align: center;
-    letter-spacing: -3px;
-    font-size: 40px;
+    letter-spacing: -5px;
+    font-size: 30px;
+    margin-top: 60px;
 }
 
 /* Dropdown Button */
@@ -35,7 +66,7 @@ h2 {
     text-align: center;
     line-height: 1.5;
     font-weight: 800;
-    color:#777;
+    color:rgb(78, 78, 78);
 }
  #sidoselect{
     padding:10px 0;
@@ -47,10 +78,12 @@ h2 {
     padding:10px 0 ;
     font-size:1.1rem;
     font-weight: 800;
+    letter-spacing: -1px;
     cursor: pointer;
-        border-radius: 10px;
+        border-radius: 50px;
+        border : 1px #ccc solid;
 
-        box-shadow: 0 0px 10px 6px rgba(0,0,0,0.2) ;
+        box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.26) ;
 
 }
 .dropdown-content, .dropdown-content2{
@@ -67,10 +100,10 @@ h2 {
     width:23.5%;
     border:1px #ccc solid;
     cursor: pointer;
-    box-shadow: 0 0px 20px 1px rgba(0,0,0,0.1) ;
+    box-shadow: 2px 2px 0 rgba(0,0,0,0.1) ;
     margin:2px;
     color:#777;
-    border-radius: 5px;
+    border-radius: 10px;
 }
 .dropdown-content > button:hover,
 .dropdown-content2 > button:hover{
@@ -200,17 +233,17 @@ img {
     left:138px;
     width: 30px;
     height: 30px;
-    animation : shadowing 2s infinite ease-in forwards alternate;
+    animation : shadowing 1s infinite ease-in forwards alternate;
 }
 /* .image-info-ani>div{
     margin-top: 38px;
 } */
 @keyframes shadowing{
     0%{
-        opacity: 0;
+        opacity: 0.3;
     }
     70%{
-        opacity: 0;
+        opacity: 0.5;
     }
     100%{
         opacity: 1;
@@ -228,10 +261,12 @@ img {
 .sector_choice>div>button{
     text-decoration: none;
     margin: 0;
+    background-color: white;
+    color: rgb(78, 78, 78) ;
     outline: 0;
     padding:5px 10px;
-    border: 2px solid black;
-    border-radius: 10px;
+    border: 1px solid #ccc;
+    border-radius: 50px;
     cursor: pointer;
     font-weight:bold;
 }
@@ -332,7 +367,7 @@ img {
     height: 550px;
     box-sizing: border-box;
     overflow-y: scroll;
-    box-shadow: 0 0px 10px 6px rgba(0,0,0,0.2);
+    box-shadow: 0 0px 10px 1px rgba(0,0,0,0.2);
     z-index: 3;
     padding: 30px 20px;
     word-break: break-all;
