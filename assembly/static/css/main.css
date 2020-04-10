@@ -33,3 +33,7 @@ body {
     height: 20px;
     margin-bottom: -4px;
 }
+
+p {
+    font-size: 10px;
+}
