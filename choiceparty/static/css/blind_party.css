@@ -129,7 +129,7 @@ body{
 
 .policy_item{
     font-size:0.75rem;
-    width:125px;
+    width:120px;
     margin:5px;
     height:35px;
     cursor: pointer;
@@ -162,6 +162,7 @@ body{
     border-radius: 5px;
     box-sizing: border-box;
     transition: all 0.1s ease-out;
+    z-index:4;
 
 }
 .policy_detail > div {
@@ -181,6 +182,7 @@ body{
     width:auto;
     height:auto;
     border-radius: 10px;
+    z-index:5;
 }
 .policy_detail_close > img{
     width:20px;
