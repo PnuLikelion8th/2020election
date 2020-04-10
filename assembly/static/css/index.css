@@ -361,3 +361,11 @@ img {
 .정의당{box-shadow: 0 0 8px #FFCC00;}
 .민중당{box-shadow: 0 0 8px #F26522;}
 .무소속{box-shadow: 0 0 8px #808080;}
+
+
+
+/* init */
+
+.promise1,.promise2,.promise3,.promise4,.promise5,.promise6{
+    display: none;
+}

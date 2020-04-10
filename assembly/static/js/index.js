@@ -70,20 +70,53 @@ function chocie_check(e){
     button5.style.boxShadow=""
     button6.style.boxShadow=""
 
+    let promise1 = document.querySelectorAll('.promise1');
+    let promise2 = document.querySelectorAll('.promise2');
+    let promise3 = document.querySelectorAll('.promise3');
+    let promise4 = document.querySelectorAll('.promise4');
+    let promise5 = document.querySelectorAll('.promise5');
+    let promise6 = document.querySelectorAll('.promise6');
+
+
+    let promise_list = [promise1,promise2,promise3,promise4,promise5,promise6]
+
+    for(let i=0; i<6; i++){
+        for(let j=0; j<promise_list[i].length; j++){
+            promise_list[i][j].style.display="none"
+        }
+    }
     const makeshadow = "0 0px 10px 6px rgba(0,0,0,0.4)"
     
 
     if (e.target === button1){
         e.target.style.boxShadow = makeshadow;
+        for(let i=0; i<promise1.length; i++){
+            promise1[i].style.display="block"
+        }
     } if (e.target === button2){
         e.target.style.boxShadow = makeshadow;
+        for(let i=0; i<promise2.length; i++){
+            promise2[i].style.display="block"
+        }
     } if (e.target === button3){
         e.target.style.boxShadow = makeshadow;
+        for(let i=0; i<promise3.length; i++){
+            promise3[i].style.display="block"
+        }
     } if (e.target === button4){
         e.target.style.boxShadow = makeshadow;
+        for(let i=0; i<promise4.length; i++){
+            promise4[i].style.display="block"
+        }
     } if (e.target === button5){
         e.target.style.boxShadow = makeshadow;
+        for(let i=0; i<promise5.length; i++){
+            promise5[i].style.display="block"
+        }
     } if (e.target === button6){
         e.target.style.boxShadow = makeshadow;
+        for(let i=0; i<promise6.length; i++){
+            promise6[i].style.display="block"
+        }
     } 
 }
