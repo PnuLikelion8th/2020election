@@ -74,7 +74,10 @@ h2 {
         border : 1px #ccc solid;
 
         box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.26) ;
-
+   
+}
+.dropbtn2 >img{
+    margin-bottom: -4px;
 }
 .dropdown-content, .dropdown-content2{
     width:200%;

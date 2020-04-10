@@ -218,8 +218,16 @@
         }
    
     function hide_door(){
-                this.event.target.classList.add('close_door')
-                this.event.target.innerHTML = ""
+        console.log(this.event.target.innerHTML)
+        if (this.event.target.innerHTML === "click!"){
+            console.log(this.event.target.parentNode)
+            this.event.target.parentNode.innerHTML = ""
+            this.event.target.parentNode.classList.add('close_door')
+        }else{
+            this.event.target.classList.add('close_door')
+            this.event.target.innerHTML = ""
+        }
+               
     }
     function mark_show(){
         this.event.target.parentNode.firstChild.nextSibling.classList.add('hide')
