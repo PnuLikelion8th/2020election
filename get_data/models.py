@@ -74,6 +74,14 @@ class Candidate(models.Model):
     status = models.CharField('등록상태', max_length=200)
 
     attend = models.CharField('본회의 출석률',max_length=100)
+
+    promise1 = models.TextField('교육', blank=True)
+    promise2 = models.TextField('재난/코로나', blank=True)
+    promise3 = models.TextField('여성/노인/장애인/어린이', blank=True)
+    promise4 = models.TextField('도시개발', blank=True)
+    promise5 = models.TextField('소상공인/자영업자', blank=True)
+    promise6 = models.TextField('청년/일자리', blank=True)  
+
     
     class Meta:
         ordering = ['id']
