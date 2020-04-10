@@ -126,8 +126,15 @@ li {
 .partyname {
     font-size: 13px;
     letter-spacing: -1px;
+    position: relative;
 }
-
+.attend{
+    position: absolute;
+    bottom:-40px;
+    left:25px; 
+    font-size:0.75rem;
+    color:#777;
+}
 .cardWrap {
     overflow-y: auto;
     overflow-x: scroll;
@@ -346,16 +353,27 @@ img {
     top:50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 320px;
+    width: 300px;
     /* height: 100px; */
     height: 550px;
     box-sizing: border-box;
     overflow-y: scroll;
     box-shadow: 0 0px 10px 1px rgba(0,0,0,0.2);
     z-index: 3;
-    padding: 15px 10px;
+    padding: 30px 20px;
     word-break: break-all;
+    border-radius: 10px;
 }
+.name_label,.belong_label,.age_label,.edu_label,.career_label{
+    font-weight: 800;
+    font-size:1.1rem;
+}
+.name,.belong,.age,.edu,.career{
+    margin-top:15px;
+    margin-bottom: 40px;
+    line-height: 1.5;
+}
+
 .x_btn{
     position: fixed;
     right: 12px;
@@ -387,3 +405,21 @@ img {
 .정의당{box-shadow: 0 0 8px #FFCC00;}
 .민중당{box-shadow: 0 0 8px #F26522;}
 .무소속{box-shadow: 0 0 8px #808080;}
+
+
+
+/* init */
+
+.promise1,.promise2,.promise3,.promise4,.promise5,.promise6{
+    display: none;
+}
+.go_to_video_link{
+    width:300px;
+    margin:0 auto;
+    display: block;
+    text-align: center;
+    margin-top:20px;
+    color:#777;
+    font-weight: 800;
+
+}

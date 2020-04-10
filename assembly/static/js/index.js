@@ -6,9 +6,26 @@ function getValue(){
 };
 
 
-function candidate_info(name,job){
-    document.getElementById('cd_dt_info').innerHTML = "<div>"+name+"후보는 재선 후보에요.</div><br><div>"+
-        "직업은" +job+"이구요."+"</div><br><div> 이 후보의 지난 국회 본회의 출석률은 00%에요.</div><br>";
+function candidate_info(giho,jd_name,name,age,job,edu,career1,career2,attend){
+    document.getElementById('cd_dt_info').innerHTML = 
+            "<div class='name_label'> -이름- </div>"+
+            "<div class='name'>안녕하세요! "+name+"후보입니다.</div>"+
+
+            "<div class='belong_label'> -소속- </div>" +
+            "<div class='belong'>우리 지역구의 " + giho + "번" +jd_name +"소속이에요</div>"+
+
+            "<div class='age_label'> -나이- </div>" +
+            "<div class='age'>현재 나이는" + age + "세 입니다" + "</div>"+
+
+            "<div class='edu_label'> -학력&직업- </div>" +
+            "<div class='edu'>"+edu +"를 나와서<br> 현재 " + job+" 일을 하고 있습니다.</div>"+
+
+            "<div class='career_label'> -경력- </div>" +
+            "<div class='career'>지금까지<br> " +career1+ ",<br>" + career2 +"를 했었습니다.</div>"+
+
+
+            (attend === "미확인" ? "" : "<div class='attend_label'>20대 본회의 출석률</div><div>지난 본회의 출석률은" + attend + "에요.</div>")
+
     document.querySelector('.show_info').style.display="block"
 
 
@@ -70,20 +87,53 @@ function chocie_check(e){
     button5.style.boxShadow=""
     button6.style.boxShadow=""
 
+    let promise1 = document.querySelectorAll('.promise1');
+    let promise2 = document.querySelectorAll('.promise2');
+    let promise3 = document.querySelectorAll('.promise3');
+    let promise4 = document.querySelectorAll('.promise4');
+    let promise5 = document.querySelectorAll('.promise5');
+    let promise6 = document.querySelectorAll('.promise6');
+
+
+    let promise_list = [promise1,promise2,promise3,promise4,promise5,promise6]
+
+    for(let i=0; i<6; i++){
+        for(let j=0; j<promise_list[i].length; j++){
+            promise_list[i][j].style.display="none"
+        }
+    }
     const makeshadow = "0 0px 10px 6px rgba(0,0,0,0.4)"
     
 
     if (e.target === button1){
         e.target.style.boxShadow = makeshadow;
+        for(let i=0; i<promise1.length; i++){
+            promise1[i].style.display="block"
+        }
     } if (e.target === button2){
         e.target.style.boxShadow = makeshadow;
+        for(let i=0; i<promise2.length; i++){
+            promise2[i].style.display="block"
+        }
     } if (e.target === button3){
         e.target.style.boxShadow = makeshadow;
+        for(let i=0; i<promise3.length; i++){
+            promise3[i].style.display="block"
+        }
     } if (e.target === button4){
         e.target.style.boxShadow = makeshadow;
+        for(let i=0; i<promise4.length; i++){
+            promise4[i].style.display="block"
+        }
     } if (e.target === button5){
         e.target.style.boxShadow = makeshadow;
+        for(let i=0; i<promise5.length; i++){
+            promise5[i].style.display="block"
+        }
     } if (e.target === button6){
         e.target.style.boxShadow = makeshadow;
+        for(let i=0; i<promise6.length; i++){
+            promise6[i].style.display="block"
+        }
     } 
 }

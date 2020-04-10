@@ -1,4 +1,5 @@
 {% load static %}
+{% load custom_tags %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,14 +45,14 @@
 
         <div class="sector_choice">
             <div class="divided">
-                <button onclick="chocie_check();" class="choice_type1">교육</button>
-                <button onclick="chocie_check();" class="choice_type2">재난/코로나</button>
-                <button onclick="chocie_check();" class="choice_type3">여성/노인/장애인/어린이</button>
+                <button onclick="chocie_check(event);" class="choice_type1">교육</button>
+                <button onclick="chocie_check(event);" class="choice_type2">재난/코로나</button>
+                <button onclick="chocie_check(event);" class="choice_type3">여성/노인/장애인/어린이</button>
             </div>
             <div class="divided">
-                <button onclick="chocie_check();" class="choice_type4">도시개발</button>
-                <button onclick="chocie_check();" class="choice_type5">소상공인/자영업자</button>
-                <button onclick="chocie_check();" class="choice_type6">청년/일자리</button>
+                <button onclick="chocie_check(event);" class="choice_type4">도시개발</button>
+                <button onclick="chocie_check(event);" class="choice_type5">소상공인/자영업자</button>
+                <button onclick="chocie_check(event);" class="choice_type6">청년/일자리</button>
                 
             </div>
         </div>
@@ -63,22 +64,67 @@
                 <li>
                     <div class="candidate_section">
                         <div class="talk_section">
-                            <div>
-                                asdasdsad내용~asdsad내용~asdsad내용~asdsad내용~asdsad내용~asdsad내용~
+                            <div class="promise1">
+                                {% if i.promise %}
+                                {{i.promise1|split_promise|safe}}
+                                {% else %}
+                                관련 주요 공약이 없습니다.
+                                {% endif %}
+                            </div>
+                            <div class="promise2">
+                                {% if i.promise2 %}
+                                {{i.promise2|split_promise|safe}}
+                                {% else %}
+                                관련 주요 공약이 없습니다.
+                                {% endif %}
+                            </div>
+                            <div class="promise3">
+                                {% if i.promise3 %}
+                                {{i.promise3|split_promise|safe}}
+                                {% else %}
+                                관련 주요 공약이 없습니다.
+                                {% endif %}
+                            </div>
+                            <div class="promise4">
+                                {% if i.promise4 %}
+                                {{i.promise4|split_promise|safe}}
+                                {% else %}
+                                관련 주요 공약이 없습니다.
+                                {% endif %}
+                            </div>
+                            <div class="promise5">
+                                {% if i.promise5 %}
+                                {{i.promise5|split_promise|safe}}
+                                {% else %}
+                                관련 주요 공약이 없습니다.
+                                {% endif %}
+                            </div>
+                            <div class="promise6">
+                                {% if i.promise6 %}
+                                {{i.promise6|split_promise|safe}}
+                                {% else %}
+                                관련 주요 공약이 없습니다.
+                                {% endif %}
                             </div>
                             <div class="talk_section_tail"></div>
                             <div class="talk_section_tail_inner"></div>
                         </div>
 
                         <img class="image-info-ani" src="{% static 'img/cursor.png' %}">
-                            <div onclick="candidate_info('{{i.name}}','{{i.job}}');" class="image-cropper {{i.jdname}}">
+                            <div onclick="candidate_info('{{i.giho_num}}','{{i.jdname}}','{{i.name}}','{{i.age}}','{{i.job}}','{{i.edu}}','{{i.career1}}','{{i.career2}}','{{i.attend}}');" class="image-cropper {{i.jdname}}">
                                 
                                 <img src="http://cpmadang.org/sites/default/files/{{i.candi_id}}.JPG">
                             </div>
                         
 
                         <p class="candidatename">{{i.name}}</p>
-                        <p class="partyname">{{i.jdname}}</p>
+                        <p class="partyname">{{i.jdname}}
+                            <p class="attend">
+                                20대 국회 본회의 출석률 : {{i.attend}}
+                            
+                            </p>
+
+                        </p>
                         
                     </div>
                 </li>
@@ -93,9 +139,15 @@
         <div id="cd_dt_info"></div>
     </div>
 
-    <!-- <section class="resultWrap">
+    <a class="go_to_video_link" target="_blank" href="https://www.youtube.com/channel/UC7ZokPF5h305q3VkMuYWfCA/search?query={{search_video_q}}">
+        후보자 토론영상 보러가기<br>
+    <span>
+        Click! 👉
+    </span>
+    </a>
+    <section class="resultWrap">
         <br> <br> <br>
-    </section> -->
+    </section> 
     {% endif %}
 </body>
 </html>
