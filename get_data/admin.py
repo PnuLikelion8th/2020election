@@ -12,7 +12,11 @@ class GunguAdmin(admin.ModelAdmin):
 
 
 class CandidateAdmin(admin.ModelAdmin):
-    list_display = ('candi_id','name','sggname','giho_num','jdname','age','job','edu','career1','career2')
+    list_display = ('candi_id', 'name', 'sggname', 'giho_num', 'jdname', 'age',
+                    'job', 'edu', 'career1', 'career2', 'promise4', 'promise5', 'promise3', 'promise1', 'promise6', 'promise2')
+    list_editable = ('promise1', 'promise2', 'promise3',
+                     'promise4', 'promise5', 'promise6')
+    list_filter = ('sggname', 'jdname')
 
 admin.site.register(Party)
 

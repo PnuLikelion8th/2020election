@@ -15,7 +15,7 @@ def index(request):
     if request.GET.get('gungus'):
         temp_gungus = Gungu.objects.get(id=request.GET.get('gungus'))
         target_candidates = candidates.filter(sggname=temp_gungus)
-        search_video_q = '부산광역시' + request.GET.get('gungus')
+        search_video_q = '부산광역시' + temp_gungus.sgg_name
         context = {'cities' : cities, 'gungus' :gungus,'temp_gungus':temp_gungus, 'candidates':candidates,
                    'target_candidates': target_candidates, 'parties': parties, 'partypolicies': partypolicies, 'search_video_q': search_video_q}
         return render(request, 'index.html', context)

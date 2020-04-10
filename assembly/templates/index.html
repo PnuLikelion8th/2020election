@@ -14,11 +14,11 @@
     </a>
     <section class="mainpage">
         <h1 class="title">우리는
-            <br>
+            
             얼마나
-            <br>
+            
             생각이
-            <br>
+            
             비-슷할까</h1>
         <p class="title-comment">
             내 생각과 우리 지역구 후보자의 공약은 얼마나 비슷할까요?
@@ -45,10 +45,10 @@
    
     {% if target_candidates %}
     <section class="who">
-        <h2>우리 지역 후보들은
+        <h3>우리 지역 후보들은
             <br>
             어떤 생각을 가지고 있을까요?
-        </h2>
+        </h3>
         <div class="whoWrap">
             <ul>
 
@@ -64,7 +64,7 @@
                         </div>
 
                         <img class="image-info-ani" src="{% static 'img/cursor.png' %}">
-                            <div onclick="candidate_info('{{i.name}}','{{i.job}}');" class="image-cropper {{i.jdname}}">
+                            <div onclick="candidate_info('{{i.giho_num}}','{{i.jdname}}','{{i.name}}','{{i.age}}','{{i.job}}','{{i.edu}}','{{i.career1}}','{{i.career2}}','{{i.attend}}');" class="image-cropper {{i.jdname}}">
                                 
                                 <img src="http://cpmadang.org/sites/default/files/{{i.candi_id}}.JPG">
                             </div>
@@ -107,7 +107,12 @@
         <div id="cd_dt_info"></div>
     </div>
 
-    <a class="go_to_video_link" target="_blank" href="https://www.youtube.com/channel/UC7ZokPF5h305q3VkMuYWfCA/search?query={{search_video_q}}">후보자 토론영상 보러가기 👉</a>
+    <a class="go_to_video_link" target="_blank" href="https://www.youtube.com/channel/UC7ZokPF5h305q3VkMuYWfCA/search?query={{search_video_q}}">
+        후보자 토론영상 보러가기<br>
+    <span>
+        Click! 👉
+    </span>
+    </a>
     <section class="resultWrap">
         <br> <br> <br>
     </section>
