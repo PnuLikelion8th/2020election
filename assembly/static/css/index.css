@@ -2,18 +2,8 @@ section {
     height: 100%;
 }
 
-.jdworldcup{
-    margin: 30px;
-    display: block;
-    text-align: center;
-    text-decoration: none;
-    font-weight: 800 ;
-    height : 50px;
-    line-height: 50px;
-    background: none;
-    border-radius : 50px;
-    border: 1px #ccc solid;
-    box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.26) ;
+.icon {
+    height: 20px;
 }
 
 .title {
@@ -91,6 +81,7 @@ h2 {
     display: none;
     margin-left:-50%;
     margin-top:10px;
+    margin-bottom: 10px;
 }
 .dropdown-content > button,
 .dropdown-content2 > button {
@@ -258,7 +249,7 @@ img {
     color: rgb(78, 78, 78) ;
     outline: 0;
     padding:5px 10px;
-    border: 1px solid #ccc;
+    border: 1px #ccc solid;
     border-radius: 50px;
     cursor: pointer;
     font-weight:bold;

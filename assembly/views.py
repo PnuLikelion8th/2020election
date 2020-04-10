@@ -3,7 +3,8 @@ from get_data.models import Party, PartyPolicy, City, Gungu, Candidate
 import urllib.request
 from urllib.parse import urlencode,quote_plus
 
-
+def main(request):
+    return render(request, 'main.html')
 
 def index(request):
     cities = City.objects

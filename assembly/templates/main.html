@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+    <title>Document</title>
+</head>
+<body>
+    <h1 class="title">
+        2020총선
+        <br>
+        한 표의 힘
+        <br>
+    </h1>
+    <div class = "btnWrap">
+        <button type="button" onclick="location.href='{% url 'index'%}'" class="btn">지역구후보 주요공약  <img src="{% static 'image/election_icon.png' %}" class="icon"></button>
+        <button type="button" onclick="location.href='{% url 'blind_party' %}'" class="btn">공약 블라인드테스트  <img src="{% static 'image/election_icon.png' %}" class="icon"></button>
+    </div>
+</body>
+</html>
