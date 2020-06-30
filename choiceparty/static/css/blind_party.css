@@ -66,6 +66,7 @@ body{
     padding-right:50px;
     box-sizing: border-box;
     border-radius: 30px;
+    flex-direction: column;
 }
 
 
@@ -102,7 +103,7 @@ body{
     justify-content: center;
     align-items: center;
     line-height: 1.5;
-    font-size:2rem;
+    font-size:1.5rem;
     font-weight: 800;
     z-index:1;
     border-radius: 30px;
@@ -113,6 +114,7 @@ body{
     color:#777;
     font-size:1.5rem;
     pointer-events: none;
+    margin-top:20px;
 }
 .zero_width{
     min-width: 0;
@@ -204,6 +206,7 @@ body{
 .mark_show{
     opacity:1;  
     transition: all 0.1s ease-in;
+    z-index:1;
 
 }
 .result_party{
@@ -237,15 +240,16 @@ body{
 }
 .home_fix_link{
     position: fixed;
-    top:15px;
-    right:25px;
+    top:10px;
+    right:10px;
     z-index:3;
     color:#777;
     font-weight: 800;
     text-decoration: unset;
 }
-
-
+.home_fix_link > img{
+    width:50px;
+}
 .choice_starttext{
     margin-bottom:50px;
     color:#aaa;
@@ -258,4 +262,8 @@ body{
 .choice_starttext > img{
     height:50px;
     float: right;
+}
+
+.no_submit_class{
+    height:100px;
 }

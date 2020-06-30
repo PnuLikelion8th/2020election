@@ -20,7 +20,7 @@
 </head>
 <body> 
     <a class="home_fix_link" href="{% url 'main' %}">
-        메인으로
+        <img src="{% static 'image/main_icon.png' %}" alt="메인으로" >
     </a>
     <div class="party_container">
         
@@ -61,6 +61,7 @@
                     </div>
                     {%endfor%}
                     {%else%}
+                    <img class="no_submit_class" src="{% static 'image/no_submit.png'%}" alt="공약을 제출하지 않았습니다">
                     <span>이 정당의 공약은 없습니다.</span>
                     {%endif%}
 
@@ -74,6 +75,7 @@
             {%if msg != None %}
 
                 <div onclick="hide_door()" class="party_choice_door">
+                    <img src="{% static 'image/happy_icon.png'%}" alt="기쁜사진">
                     어떤 정당이<br>
                     부전승으로<br> 
                     올라갔습니다.<br>
@@ -144,6 +146,8 @@
                                     </div>
                                 {%endfor%}
                             {%else%}
+                                <img class="no_submit_class" src="{% static 'image/no_submit.png'%}" alt="공약을 제출하지 않았습니다">
+
                                 <span>이 정당의 공약은 없습니다.</span>
                             {%endif%}
                     </div>
@@ -183,6 +187,8 @@
                                         </div>
                                     {%endfor%}
                                 {%else%}
+                                    <img class="no_submit_class" src="{% static 'image/no_submit.png'%}" alt="공약을 제출하지 않았습니다">
+
                                     <span>이 정당의 공약은 없습니다.</span>
                                 {%endif%}
                             
@@ -204,6 +210,7 @@
 <script>
     function marking(){
         let that = this.event.target
+        console.log(this.event.target.nextSibling.nextSibling.firstChild.nextSibling)
         this.event.target.nextSibling.nextSibling.firstChild.nextSibling.classList.add('mark_show')
         
         setTimeout(hide.bind(null,that), 200)
